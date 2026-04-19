@@ -29,6 +29,9 @@ const Footer = () => {
                             </ul>
                         </div>
                     </div>
+                    <div className="border-top border-secondary pt-3 text-center">
+                        <small className="text-secondary">&copy; 2026 Bus Ticket Management System. All Rights Reserved.</small>
+                    </div>
                 </div>
             </footer>
         </div>
