@@ -16,7 +16,7 @@ const HeroSection = () => {
                         </p>
                         <div className="d-flex gap-3">
                             <button className="btn btn-danger btn-lg px-4 fw-bold shadow-sm">Explore Routes</button>
-                            <button className="btn btn-outline-dark btn-lg px-4 fw-bold shadow-sm">View Operators</button>
+                            <button className="btn btn-outline-dark btn-lg px-4 fw-bold shadow-sm">View Companies</button>
                         </div>
                     </div>
                     <div className="col-lg-6 text-center fade-in-up">
