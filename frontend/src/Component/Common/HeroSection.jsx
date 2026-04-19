@@ -19,6 +19,9 @@ const HeroSection = () => {
                             <button className="btn btn-outline-dark btn-lg px-4 fw-bold shadow-sm">View Operators</button>
                         </div>
                     </div>
+                    <div className="col-lg-6 text-center fade-in-up">
+                        <img src={busImg} alt="Modern AC Bus" className="img-fluid rounded-4 shadow-lg floating-bus" style={{ border: "8px solid white" }} />
+                    </div>
                 </div>
             </div>
         </section>
