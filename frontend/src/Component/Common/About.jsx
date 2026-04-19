@@ -17,6 +17,9 @@ const About = () => {
                         </p>
                         <button className="btn btn-outline-danger mt-3">Learn More</button>
                     </div>
+                    <div className="col-lg-6 text-center fade-in-up">
+                        <img src={about} alt="Image of About Section" className="img-fluid rounded-4 shadow-lg floating-bus" />
+                    </div>
                 </div>
             </div>
         </section>
