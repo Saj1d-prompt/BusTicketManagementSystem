@@ -34,6 +34,23 @@ const Contact = () => {
     }
     return (
         <div>
+            {message && (
+                <div style={{
+                    position: "fixed",
+                    top: "20px",
+                    right: "20px",
+                    minWidth: "250px",
+                    padding: "12px 18px",
+                    borderRadius: "8px",
+                    color: "#fff",
+                    backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                    zIndex: 9999,
+                    animation: "slideIn 0.3s ease"
+                }}>
+                    {message.text}
+                </div>
+            )}
             <section id="contact" className="py-5">
                 <div className="container py-4">
                     <h4 className="text-center text-muted mb-3">For any Question or Complaints</h4>
