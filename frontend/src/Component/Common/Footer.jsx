@@ -24,7 +24,7 @@ const Footer = () => {
                             <h5 className="fw-bold mb-3">Contact Info</h5>
                             <ul className="list-unstyled text-secondary small">
                                 <li className="mb-2">📍 Dhaka, Bangladesh</li>
-                                <li className="mb-2">📧 support@bdbushub.com</li>
+                                <li className="mb-2">📧 support@bdbtms.com</li>
                                 <li className="mb-2">📞 +880 1234 567890</li>
                             </ul>
                         </div>
