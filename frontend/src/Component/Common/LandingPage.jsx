@@ -4,6 +4,7 @@ import HeroSection from './HeroSection'
 import Feature from './Feature'
 import About from './About'
 import Footer from './Footer'
+import Contact from './Contact'
 
 const LandingPage = () => {
   return (
@@ -12,6 +13,7 @@ const LandingPage = () => {
       <HeroSection/>
       <Feature/>
       <About/>
+      <Contact/>
       <Footer/>
     </div>
   )
