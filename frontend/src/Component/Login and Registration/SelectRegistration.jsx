@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from '../../Style/Registration.module.css';
 import OptionCard from './OptionCard';
+import PassengerReg from './PassengerReg';
 const SelectRegistration = () => {
     return (
         <div className="text-center">
+            <PassengerReg/>
             <h2 className="fw-bold mb-4">Create an Account</h2>
             <p className="text-muted mb-5">How would you like to join Bus Ticket Management System?</p>
 
