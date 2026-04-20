@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../Image/bmslogo.png'
 import style from '../../Style/Heading.module.css'
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Heading = () => {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Heading = () => {
             <nav className="border-bottom " >
                 <div className="d-flex justify-content-around align-items-center " style={{ height: "80px", width: "auto" }}>
 
-                    <img src={logo} alt="Logo" style={{ height: "80px", width: "auto" }} />
+                    <Link to="/"><img src={logo} alt="Logo" style={{ height: "80px", width: "auto" }} /></Link>
 
                     <ul className={style.navLinks}>
                         <li><a href="#features" className={style.link}>Features</a></li>
