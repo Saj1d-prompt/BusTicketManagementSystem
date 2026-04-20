@@ -2,9 +2,14 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const PassengerReg = () => {
+const PassengerReg = ({ onBack }) => {
   return (
     <div>
+        <div className="d-flex align-items-center mb-4">
+            <button onClick={onBack} className="btn btn-sm btn-outline-secondary me-3">
+                &larr; Back
+            </button>
+        </div>
         <h2 className="text-center mb-4">Passenger Registration</h2>
         <Form className="mx-auto" style={{ maxWidth: '600px' }}>
             <Form.Group className="mb-3 text-start" controlId="formBasicName">
