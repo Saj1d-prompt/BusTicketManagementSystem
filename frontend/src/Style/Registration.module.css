@@ -1,0 +1,24 @@
+/* Register.module.css */
+.optionCard {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.optionCard:hover {
+    transform: translateY(-5px);
+    border-color: #dc3545; /* Bootstrap danger red */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.iconWrapper {
+    width: 80px;
+    height: 80px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 2rem;
+}
