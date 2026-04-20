@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PassengerReg from './PassengerReg';
 import BusCompanyReg from './BusCompanyReg';
 import SelectRegistration from './SelectRegistration';
+import Heading from '../Common/Heading';
 
 const Registration = () => {
   const [role, setRole] = useState(null);
@@ -17,6 +18,7 @@ const Registration = () => {
   };
   return (
     <div>
+      <Heading />
       {renderContent()}
     </div>
   )

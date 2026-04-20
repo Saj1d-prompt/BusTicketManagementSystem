@@ -5,7 +5,7 @@ import BusCompanyReg from './BusCompanyReg';
 const SelectRegistration = ({ onSelectRole }) => {
     return (
         <div className="text-center">
-            <h2 className="fw-bold mb-4">Create an Account</h2>
+            <h2 className="fw-bold mb-4 my-4">Create an Account</h2>
             <p className="text-muted mb-5">How would you like to join Bus Ticket Management System?</p>
 
             <div className="row g-4 justify-content-center">
