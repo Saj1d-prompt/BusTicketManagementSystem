@@ -1,8 +1,10 @@
 import React from 'react'
 import logo from '../../Image/bmslogo.png'
 import style from '../../Style/Heading.module.css'
+import { useNavigate } from 'react-router-dom';
 
 const Heading = () => {
+    const navigate = useNavigate();
     return (
         <div>
             <nav className="border-bottom " >
@@ -17,8 +19,8 @@ const Heading = () => {
                     </ul>
 
                     <div className="d-flex gap-4">
-                        <button className="btn btn-outline-danger">Login</button>
-                        <button className="btn btn-danger">Register</button>
+                        <button className="btn btn-outline-danger" onClick={() => navigate('/login')}>Login</button>
+                        <button className="btn btn-danger" onClick={() => navigate('/register')}>Register</button>
                     </div>
 
                 </div>

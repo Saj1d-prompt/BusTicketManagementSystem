@@ -8,12 +8,13 @@ function App() {
   return (
     <>
       {/* <LandingPage/> */}
-      <Registration />
-      {/* <BrowserRouter>
+      {/* <Registration /> */}
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<Registration />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
     </>
   )
