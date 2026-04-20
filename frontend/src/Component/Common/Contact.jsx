@@ -1,16 +1,23 @@
 import React from 'react'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form';
 
 const Contact = () => {
+    const [message, setMessage] = useState('');
+    const {register, handleSubmit} = useForm();
+    const onSubmit = (data) => {
+
+    }
   return (
     <div>
       <section id="contact" className="py-5">
             <div className="container py-4">
-                <h4 className="text-center text-muted mb-3">For any Question</h4>
+                <h4 className="text-center text-muted mb-3">For any Question or Complaints</h4>
                 <h2 className="text-center fw-bold mb-5">Get In Touch</h2>
                 <div className="row justify-content-center">
                     <div className="col-lg-8">
                         <div className="card border-0 shadow-sm p-4">
-                            <form>
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className="row g-3 mb-3">
                                     <div className="col-md-6">
                                         <label className="form-label text-muted">Your Name</label>
