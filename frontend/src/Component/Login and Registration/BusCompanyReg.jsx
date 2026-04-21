@@ -7,6 +7,32 @@ import { useState } from 'react';
 const BusCompanyReg = ({ onBack }) => {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const [message, setMessage] = useState(null);
+    const onSubmit = async (data) => {
+        try {
+            const formData = new FormData();
+
+            formData.append("company_name", data.company_name);
+            formData.append("license_number", data.license_number);
+            formData.append("document_path", data.document_path[0]);
+            formData.append("name", data.owner_name);
+            formData.append("email", data.business_email);
+            formData.append("phone", data.business_phone);
+            formData.append("password", data.password);
+            formData.append("password_confirmation", data.password_confirmation);
+
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/registerCompany`, {
+                method: 'POST',
+                body: formData, 
+            });
+        } catch (error) {
+            setMessage({ text: 'An error occurred while registering. Please try again later.', type: "danger" });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+            console.error('Error registering company:', error);
+        }
+    }
+
     return (
         <div>
             <div className="d-flex align-items-center mb-4">
