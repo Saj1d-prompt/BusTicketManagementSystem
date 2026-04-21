@@ -24,6 +24,20 @@ const BusCompanyReg = ({ onBack }) => {
                 method: 'POST',
                 body: formData, 
             });
+            const result = await response.json();
+            if (result.status === 200) {
+                setMessage({ text: result.message, type: "success" });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+                reset();
+
+            } else if (result.status === 422) {
+                setMessage({ text: 'Validation errors: ' + result.message, type: "danger" });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         } catch (error) {
             setMessage({ text: 'An error occurred while registering. Please try again later.', type: "danger" });
             setTimeout(() => {
