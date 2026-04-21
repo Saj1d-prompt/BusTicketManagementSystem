@@ -7,7 +7,37 @@ import { useState } from 'react';
 const PassengerReg = ({ onBack }) => {
     const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const [message, setMessage] = useState(null);
-    
+    const onSubmit = async (data) => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/registerPassenger`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const result = await response.json();
+            if (result.status === 200) {
+                setMessage({ text: result.message, type: "success" });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+                reset();
+
+            } else if (result.status === 422) {
+                setMessage({ text: 'Validation errors: ' + result.message, type: "danger" });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
+        } catch (error) {
+            setMessage({ text: 'An error occurred while registering. Please try again later.', type: "danger" });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+            console.error('Error registering passenger:', error);
+        }
+    }
   return (
     <div>
         <div className="d-flex align-items-center mb-4">
