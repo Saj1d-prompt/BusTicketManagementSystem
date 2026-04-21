@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class RegistrationController extends Controller
@@ -12,8 +13,8 @@ class RegistrationController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'phone' => 'nullable|string|max:12',
-            'password' => 'required|string|min:5|confirmed',
+            'phone' => 'nullable|string|max:11',
+            'password' => 'required|string|min:5',
         ]);
 
         if($validate->fails()){
@@ -22,19 +23,20 @@ class RegistrationController extends Controller
                 'message' => $validate->errors()
             ], 422);
         }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => $request->password,
-        ]);
+        
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = 'passenger';
+        $user->password = Hash::make($request->password);
+        $user->save();
 
         return response()->json([
             'status' => 200,
             'message' => 'Your Account has been created successfully',
             'user' => $user
-        ], 201);
+        ], 200);
 
     }
 }
