@@ -1,8 +1,13 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 const PassengerReg = ({ onBack }) => {
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const [message, setMessage] = useState(null);
+    
   return (
     <div>
         <div className="d-flex align-items-center mb-4">
@@ -11,6 +16,23 @@ const PassengerReg = ({ onBack }) => {
             </button>
         </div>
         <h2 className="text-center mb-4">Passenger Registration</h2>
+        {message && (
+                <div style={{
+                    position: "fixed",
+                    top: "20px",
+                    right: "20px",
+                    minWidth: "250px",
+                    padding: "12px 18px",
+                    borderRadius: "8px",
+                    color: "#fff",
+                    backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                    zIndex: 9999,
+                    animation: "slideIn 0.3s ease"
+                }}>
+                    {message.text}
+                </div>
+            )}
         <Form className="mx-auto" style={{ maxWidth: '600px' }} onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 text-start" controlId="formBasicName">
                 <Form.Label>Full Name</Form.Label>
