@@ -22,7 +22,7 @@ const BusCompanyReg = ({ onBack }) => {
 
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/registerCompany`, {
                 method: 'POST',
-                body: formData, 
+                body: formData,
             });
             const result = await response.json();
             if (result.status === 200) {
@@ -55,6 +55,23 @@ const BusCompanyReg = ({ onBack }) => {
                 </button>
             </div>
             <h2 className="text-center mb-4">Bus Company Registration</h2>
+            {message && (
+                <div style={{
+                    position: "fixed",
+                    top: "20px",
+                    right: "20px",
+                    minWidth: "250px",
+                    padding: "12px 18px",
+                    borderRadius: "8px",
+                    color: "#fff",
+                    backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                    zIndex: 9999,
+                    animation: "slideIn 0.3s ease"
+                }}>
+                    {message.text}
+                </div>
+            )}
             <Form className="mx-auto" style={{ maxWidth: '600px' }} onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3 text-start" controlId="formBasicName">
                     <Form.Label>Transport Company Name</Form.Label>
