@@ -36,7 +36,6 @@ class UserController extends Controller
             'email' => $user->email,
             'role' => $user->role,
             'id' => $user->id,
-            'is_profile_complete' => $user->is_profile_complete,
             'status' => 200
         ], 200);
     }
