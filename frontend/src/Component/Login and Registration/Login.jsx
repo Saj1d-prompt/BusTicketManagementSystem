@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Heading from '../Common/Heading';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -24,6 +25,9 @@ const Login = () => {
               Login
             </Button>
           </Form>
+          <p className="text-center mt-3 text-muted">
+            Don't have an account? <Link to="/register" style={{textDecoration: 'none'}}><span style={{ cursor: 'pointer', color: '#dc3545' }}>Register</span></Link>
+          </p>
         </Card>
       </div>
     </div>
