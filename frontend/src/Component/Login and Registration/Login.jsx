@@ -33,12 +33,19 @@ const Login = () => {
           role: result.role,
           token: result.token,
         }
-        console.log(userInfo);
         login(userInfo);
         setMessage({ text: result.message, type: "success" });
         setTimeout(() => {
           setMessage(null);
-          navigate('/');
+          if (result.role === 'admin') {
+            navigate('/superAdminDashboard');
+          } else if (result.role === 'passenger') {
+            navigate('/passengerDashboard');
+          } else if (result.role === 'company') {
+            navigate('/companyDashboard');
+          } else {
+            navigate('/operatorDashboard');
+          }
         }, 3000);
       } else {
         setMessage({ text: result.message, type: "danger" });
