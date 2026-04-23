@@ -17,7 +17,13 @@ const Login = () => {
   const navigate = useNavigate();
   const onSubmit = async (data) => {
     try{
-
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
     }catch(error){
       setMessage({ text: 'An error occurred while logging in. Please try again later.', type: "danger" });
       setTimeout(() => {
