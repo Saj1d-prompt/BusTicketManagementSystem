@@ -4,8 +4,17 @@ import Form from 'react-bootstrap/Form';
 import Heading from '../Common/Heading';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useContext } from 'react';
+import {AuthContext} from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [message, setMessage] = useState(null);
+  const {login} = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
       <Heading />
