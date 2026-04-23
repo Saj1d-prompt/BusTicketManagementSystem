@@ -15,13 +15,16 @@ const Login = () => {
   const [message, setMessage] = useState(null);
   const {login} = useContext(AuthContext);
   const navigate = useNavigate();
+  const onSubmit = async (data) => {
+    
+  }
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
       <Heading />
       <div className="d-flex justify-content-center align-items-center">
         <Card className="shadow-lg p-4 mt-5" style={{ width: '500px', borderRadius: '15px' }}>
           <h3 className="text-center mb-4 fw-bold">Login</h3>
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
               <Form.Label className="fw-semibold">Email address</Form.Label>
               <Form.Control type="email" placeholder="Enter your email" className="py-2" />
