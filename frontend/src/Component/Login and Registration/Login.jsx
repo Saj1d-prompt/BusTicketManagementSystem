@@ -16,7 +16,14 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
+    try{
 
+    }catch(error){
+      setMessage({ text: 'An error occurred while logging in. Please try again later.', type: "danger" });
+      setTimeout(() => {
+          setMessage(null);
+      }, 3000);
+    }
   }
   return (
     <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
