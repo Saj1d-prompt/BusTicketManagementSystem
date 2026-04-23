@@ -26,18 +26,24 @@ const Login = () => {
       });
       const result = await response.json();
       if(result.status == 200){
-        userInfo = {
+        const userInfo = {
           id: result.id,
           name: result.name,
           email: result.email,
           role: result.role,
           token: result.token,
         }
+        console.log(userInfo);
         login(userInfo);
         setMessage({ text: result.message, type: "success" });
         setTimeout(() => {
           setMessage(null);
           navigate('/');
+        }, 3000);
+      }else{
+        setMessage({ text: result.message, type: "danger" });
+        setTimeout(() => {
+          setMessage(null);
         }, 3000);
       }
     }catch(error){
