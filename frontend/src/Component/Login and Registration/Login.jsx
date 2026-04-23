@@ -16,7 +16,7 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const onSubmit = async (data) => {
-    try{
+    try {
       const response = await fetch(`${import.meta.env.VITE_API_KEY}/login`, {
         method: 'POST',
         headers: {
@@ -25,7 +25,7 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       const result = await response.json();
-      if(result.status == 200){
+      if (result.status == 200) {
         const userInfo = {
           id: result.id,
           name: result.name,
@@ -40,16 +40,16 @@ const Login = () => {
           setMessage(null);
           navigate('/');
         }, 3000);
-      }else{
+      } else {
         setMessage({ text: result.message, type: "danger" });
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       }
-    }catch(error){
+    } catch (error) {
       setMessage({ text: 'An error occurred while logging in. Please try again later.', type: "danger" });
       setTimeout(() => {
-          setMessage(null);
+        setMessage(null);
       }, 3000);
     }
   }
@@ -59,6 +59,23 @@ const Login = () => {
       <div className="d-flex justify-content-center align-items-center">
         <Card className="shadow-lg p-4 mt-5" style={{ width: '500px', borderRadius: '15px' }}>
           <h3 className="text-center mb-4 fw-bold">Login</h3>
+          {message && (
+            <div style={{
+              position: "fixed",
+              top: "20px",
+              right: "20px",
+              minWidth: "250px",
+              padding: "12px 18px",
+              borderRadius: "8px",
+              color: "#fff",
+              backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              zIndex: 9999,
+              animation: "slideIn 0.3s ease"
+            }}>
+              {message.text}
+            </div>
+          )}
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group className="mb-3 text-start" controlId="formBasicEmail">
               <Form.Label className="fw-semibold">Email address</Form.Label>
