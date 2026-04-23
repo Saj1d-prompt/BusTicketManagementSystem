@@ -24,6 +24,22 @@ const Login = () => {
         },
         body: JSON.stringify(data),
       });
+      const result = await response.json();
+      if(result.status == 200){
+        userInfo = {
+          id: result.id,
+          name: result.name,
+          email: result.email,
+          role: result.role,
+          token: result.token,
+        }
+        login(userInfo);
+        setMessage({ text: result.message, type: "success" });
+        setTimeout(() => {
+          setMessage(null);
+          navigate('/');
+        }, 3000);
+      }
     }catch(error){
       setMessage({ text: 'An error occurred while logging in. Please try again later.', type: "danger" });
       setTimeout(() => {
