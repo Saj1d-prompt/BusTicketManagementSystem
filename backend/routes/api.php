@@ -13,3 +13,4 @@ Route::get('/user', function (Request $request) {
 Route::post('/storeSupport', [supportController::class, 'storeSupportQuestion']);
 Route::post('/registerPassenger', [RegistrationController::class, 'registerPassenger']);
 Route::post('/registerCompany', [RegistrationController::class, 'registerCompany']);
+Route::post('/login', [UserController::class, 'login']);
