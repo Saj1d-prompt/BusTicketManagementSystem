@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\supportController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -14,3 +15,7 @@ Route::post('/storeSupport', [supportController::class, 'storeSupportQuestion'])
 Route::post('/registerPassenger', [RegistrationController::class, 'registerPassenger']);
 Route::post('/registerCompany', [RegistrationController::class, 'registerCompany']);
 Route::post('/login', [UserController::class, 'login']);
+
+Route::middleware(['auth:sanctum', 'role:super_admin'])->group(function () {
+    Route::get('/companyApplications', [AdminController::class, 'getCompanyAccApplications']);
+});
