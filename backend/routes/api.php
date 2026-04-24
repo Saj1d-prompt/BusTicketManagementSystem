@@ -16,6 +16,6 @@ Route::post('/registerPassenger', [RegistrationController::class, 'registerPasse
 Route::post('/registerCompany', [RegistrationController::class, 'registerCompany']);
 Route::post('/login', [UserController::class, 'login']);
 
-Route::middleware(['auth:sanctum', 'role:super_admin'])->group(function () {
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::get('/companyApplications', [AdminController::class, 'getCompanyAccApplications']);
 });

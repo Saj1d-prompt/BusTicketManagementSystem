@@ -38,7 +38,7 @@ const Login = () => {
         setTimeout(() => {
           setMessage(null);
           if (result.role === 'admin') {
-            navigate('/superAdminDashboard');
+            navigate('/adminDashboard');
           } else if (result.role === 'passenger') {
             navigate('/passengerDashboard');
           } else if (result.role === 'company') {

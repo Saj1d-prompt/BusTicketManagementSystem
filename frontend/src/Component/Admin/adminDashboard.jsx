@@ -1,11 +1,12 @@
 import React from 'react'
+import CreateCompanyAcc from './CreateCompanyAcc'
 
-const adminDashboard = () => {
+const AdminDashboard = () => {
   return (
     <div>
-      
+      <CreateCompanyAcc />
     </div>
   )
 }
 
-export default adminDashboard
+export default AdminDashboard
