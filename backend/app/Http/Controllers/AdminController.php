@@ -9,15 +9,13 @@ class AdminController extends Controller
 {
     public function getCompanyAccApplications()
     {
-        $companyApp = Company::Where('status', 'pending')
-        ->join('users', 'companies.user_id', '=', 'users.id')
+        $applications = Company::where('status', 'pending')
+        ->leftJoin('users', 'companies.id', '=', 'users.company_id')
         ->get();
-        return response()->json(
-            [
-                'status' => 200,
-                'data' => $companyApp
-            ],
-            200
-        );
+
+        return response()->json([
+            'status' => 200,
+            'data' => $applications
+        ], 200);
     }
 }
