@@ -1,6 +1,15 @@
 import React from 'react'
 import { Table, Button, Container, Card, Spinner, Badge } from 'react-bootstrap';
 const CreateCompanyAcc = () => {
+  const [applications, setApplications] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const fetchApplications = async () => {
+    try{
+
+    }catch(error){
+      console.error('Error fetching applications:', error);
+    }
+  }
   return (
     <div>
       <Container className="py-5">
