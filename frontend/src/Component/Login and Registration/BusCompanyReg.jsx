@@ -14,9 +14,9 @@ const BusCompanyReg = ({ onBack }) => {
             formData.append("company_name", data.company_name);
             formData.append("license_number", data.license_number);
             formData.append("document_path", data.document_path[0]);
-            formData.append("name", data.owner_name);
-            formData.append("email", data.business_email);
-            formData.append("phone", data.business_phone);
+            formData.append("name", data.name);
+            formData.append("email", data.email);
+            formData.append("phone", data.phone);
             formData.append("password", data.password);
             formData.append("password_confirmation", data.password_confirmation);
 

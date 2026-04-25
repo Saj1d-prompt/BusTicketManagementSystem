@@ -59,7 +59,7 @@ const CreateCompanyAcc = () => {
                     <tr key={app.id} style={{ textAlign: 'center' }}>
                       <td>{app.company_name}</td>
                       <td>{app.license_number}</td>
-                      <td><a href={app.document_path} target="_blank" rel="noopener noreferrer">View Document</a></td>
+                      <td><a href={`${import.meta.env.VITE_STORAGE_URL}/${app.document_path}`} target="_blank" rel="noopener noreferrer">View Document</a></td>
                       <td>{app.name}</td>
                       <td>{app.phone}</td>
                       <td>{app.email}</td>
