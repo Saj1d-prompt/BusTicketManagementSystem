@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Table, Button, Container, Card, Spinner, Badge } from 'react-bootstrap';
+import { AuthContext } from '../Context/AuthContext';
 const CreateCompanyAcc = () => {
   const [applications, setApplications] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const { user } = useContext(AuthContext);
+  const [message, setMessage] = React.useState(null);
   const fetchApplications = async () => {
-    try{
-
-    }catch(error){
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/admin/companyApplications`, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        }
+      });
+      const result = await response.json();
+      if (result.status === 200) {
+        setApplications(result.data);
+        setLoading(false);
+      } else {
+        setMessage({ text: 'failed to fetch applications', type: "danger" });
+        setLoading(false);
+      }
+    } catch (error) {
       console.error('Error fetching applications:', error);
+      setLoading(false);
     }
   }
   return (
@@ -18,7 +36,7 @@ const CreateCompanyAcc = () => {
             <h3>Pending Company Approvals</h3>
             <Table>
               <thead>
-                <tr style={{ backgroundColor: '#f8f9fa' , textAlign: 'center'}}>
+                <tr style={{ backgroundColor: '#f8f9fa', textAlign: 'center' }}>
                   <th>Company Name</th>
                   <th>License</th>
                   <th>License/Reg Doc</th>
@@ -29,7 +47,7 @@ const CreateCompanyAcc = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr style={{ textAlign: 'center'}}>
+                <tr style={{ textAlign: 'center' }}>
                   <td>Example Transport Co.</td>
                   <td>123456789</td>
                   <td><a href="#">View Document</a></td>
