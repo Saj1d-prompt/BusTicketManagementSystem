@@ -8,7 +8,7 @@ const CreateCompanyAcc = () => {
   const [message, setMessage] = React.useState(null);
   const fetchApplications = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_KEY}/admin/companyApplications`, {
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/companyApplications`, {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -64,6 +64,20 @@ const CreateCompanyAcc = () => {
                     <Button variant="danger">Reject</Button>
                   </td>
                 </tr>
+                {applications.map((app) => (
+                  <tr key={app.id} style={{ textAlign: 'center' }}>
+                    <td>{app.company_name}</td>
+                    <td>{app.license_number}</td>
+                    <td><a href={app.document_path} target="_blank" rel="noopener noreferrer">View Document</a></td>
+                    <td>{app.name}</td>
+                    <td>{app.phone}</td>
+                    <td>{app.email}</td>
+                    <td>
+                      <Button variant="success" className="me-2">Approve</Button>
+                      <Button variant="danger">Reject</Button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </Card.Body>
