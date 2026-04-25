@@ -9,7 +9,15 @@ const CreateCompanyAcc = () => {
             <h3>Pending Company Approvals</h3>
             <Table>
               <thead>
-                
+                <tr>
+                  <th>Company Name</th>
+                  <th>License</th>
+                  <th>License/Registration Document</th>
+                  <th>Owner/Admin Name</th>
+                  <th>Contact Number</th>
+                  <th>Email</th>
+                  <th>Action</th>
+                </tr>
               </thead>
               <tbody>
 
