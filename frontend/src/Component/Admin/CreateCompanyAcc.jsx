@@ -9,10 +9,10 @@ const CreateCompanyAcc = () => {
             <h3>Pending Company Approvals</h3>
             <Table>
               <thead>
-                <tr>
+                <tr style={{ backgroundColor: '#f8f9fa' , textAlign: 'center'}}>
                   <th>Company Name</th>
                   <th>License</th>
-                  <th>License/Registration Document</th>
+                  <th>License/Reg Doc</th>
                   <th>Owner/Admin Name</th>
                   <th>Contact Number</th>
                   <th>Email</th>
@@ -20,7 +20,18 @@ const CreateCompanyAcc = () => {
                 </tr>
               </thead>
               <tbody>
-
+                <tr style={{ textAlign: 'center'}}>
+                  <td>Example Transport Co.</td>
+                  <td>123456789</td>
+                  <td><a href="#">View Document</a></td>
+                  <td>MR. X</td>
+                  <td>+1234567890</td>
+                  <td>examplecompany@gmail.com</td>
+                  <td>
+                    <Button variant="success" className="me-2">Approve</Button>
+                    <Button variant="danger">Reject</Button>
+                  </td>
+                </tr>
               </tbody>
             </Table>
           </Card.Body>
