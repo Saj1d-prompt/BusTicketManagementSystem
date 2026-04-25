@@ -28,6 +28,11 @@ const CreateCompanyAcc = () => {
       setLoading(false);
     }
   }
+  React.useEffect(() => {
+    if (user && user.role === 'admin') {
+      fetchApplications();
+    }
+  }, [user]);
   return (
     <div>
       <Container className="py-5">
