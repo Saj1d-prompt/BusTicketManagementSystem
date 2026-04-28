@@ -38,7 +38,16 @@ const CreateCompanyAcc = () => {
 
   const handleAction = async (id, action) => {
     try{
-
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${id}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify({ status: action })
+      });
+      
     }catch(error){
       console.error(`Error ${action} application:`, error);
     }
