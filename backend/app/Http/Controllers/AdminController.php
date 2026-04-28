@@ -22,4 +22,9 @@ class AdminController extends Controller
             'data' => $applications
         ], 200);
     }
+
+    public function updateCompanyAccStatus(Request $request, $id)
+    {
+        //code
+    }
 }
