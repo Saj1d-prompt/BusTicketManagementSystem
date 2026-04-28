@@ -37,7 +37,7 @@ const CreateCompanyAcc = () => {
   }, [user]);
 
   const handleAction = async (id, action) => {
-    try{
+    try {
       const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${id}`, {
         method: 'POST',
         headers: {
@@ -54,7 +54,7 @@ const CreateCompanyAcc = () => {
       } else {
         setMessage({ text: `Failed to ${action} application`, type: "danger" });
       }
-    }catch(error){
+    } catch (error) {
       console.error(`Error ${action} application:`, error);
     }
   }
@@ -64,6 +64,23 @@ const CreateCompanyAcc = () => {
         <Card>
           <Card.Body>
             <h3>Pending Company Approvals</h3>
+            {message && (
+              <div style={{
+                position: "fixed",
+                top: "20px",
+                right: "20px",
+                minWidth: "250px",
+                padding: "12px 18px",
+                borderRadius: "8px",
+                color: "#fff",
+                backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                zIndex: 9999,
+                animation: "slideIn 0.3s ease"
+              }}>
+                {message.text}
+              </div>
+            )}
             {loading ? (
               <Spinner />
             ) : (
@@ -89,8 +106,8 @@ const CreateCompanyAcc = () => {
                       <td>{app.phone}</td>
                       <td>{app.email}</td>
                       <td>
-                        <Button variant="success" className="me-2" onClick={()=>handleAction(app.id,'approved')}>Approve</Button>
-                        <Button variant="danger" onClick={()=>handleAction(app.id,'rejected')}>Reject</Button>
+                        <Button variant="success" className="me-2" onClick={() => handleAction(app.id, 'approved')}>Approve</Button>
+                        <Button variant="danger" onClick={() => handleAction(app.id, 'rejected')}>Reject</Button>
                       </td>
                     </tr>
                   ))}
