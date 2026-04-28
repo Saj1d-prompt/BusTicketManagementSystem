@@ -47,7 +47,13 @@ const CreateCompanyAcc = () => {
         },
         body: JSON.stringify({ status: action })
       });
-      
+      const result = await response.json();
+      if (result.status === 200) {
+        setMessage({ text: `Application ${action} successfully`, type: "success" });
+        fetchApplications();
+      } else {
+        setMessage({ text: `Failed to ${action} application`, type: "danger" });
+      }
     }catch(error){
       console.error(`Error ${action} application:`, error);
     }
