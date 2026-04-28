@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Table, Button, Container, Card, Spinner, Badge, Modal } from 'react-bootstrap';
 import { AuthContext } from '../Context/AuthContext';
+import { set } from 'react-hook-form';
 const CreateCompanyAcc = () => {
   const [applications, setApplications] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -51,8 +52,14 @@ const CreateCompanyAcc = () => {
       if (result.status === 200) {
         setMessage({ text: `Application ${action} successfully`, type: "success" });
         fetchApplications();
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
       } else {
         setMessage({ text: `Failed to ${action} application`, type: "danger" });
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
       }
     } catch (error) {
       console.error(`Error ${action} application:`, error);
