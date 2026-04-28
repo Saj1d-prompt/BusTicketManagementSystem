@@ -25,6 +25,18 @@ class AdminController extends Controller
 
     public function updateCompanyAccStatus(Request $request, $id)
     {
-        //code
+        $company = Company::find($id);
+        if (!$company) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+        $company->status = $request->status;
+        $company->save();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Company account status updated successfully'
+        ], 200);
     }
 }
