@@ -64,8 +64,8 @@ const CreateCompanyAcc = () => {
                       <td>{app.phone}</td>
                       <td>{app.email}</td>
                       <td>
-                        <Button variant="success" className="me-2">Approve</Button>
-                        <Button variant="danger">Reject</Button>
+                        <Button variant="success" className="me-2" onClick={()=>handleAction(company.id,'approved')}>Approve</Button>
+                        <Button variant="danger" onClick={()=>handleAction(company.id,'rejected')}>Reject</Button>
                       </td>
                     </tr>
                   ))}
