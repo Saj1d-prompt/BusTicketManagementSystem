@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
-import { Table, Button, Container, Card, Spinner, Badge } from 'react-bootstrap';
+import { Table, Button, Container, Card, Spinner, Badge, Modal } from 'react-bootstrap';
 import { AuthContext } from '../Context/AuthContext';
 const CreateCompanyAcc = () => {
   const [applications, setApplications] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const { user } = useContext(AuthContext);
   const [message, setMessage] = React.useState(null);
+
+
   const fetchApplications = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_KEY}/companyApplications`, {
@@ -33,6 +35,14 @@ const CreateCompanyAcc = () => {
       fetchApplications();
     }
   }, [user]);
+
+  const handleAction = async (id, action) => {
+    try{
+
+    }catch(error){
+      console.error(`Error ${action} application:`, error);
+    }
+  }
   return (
     <div>
       <Container className="py-5">
@@ -64,8 +74,8 @@ const CreateCompanyAcc = () => {
                       <td>{app.phone}</td>
                       <td>{app.email}</td>
                       <td>
-                        <Button variant="success" className="me-2" onClick={()=>handleAction(company.id,'approved')}>Approve</Button>
-                        <Button variant="danger" onClick={()=>handleAction(company.id,'rejected')}>Reject</Button>
+                        <Button variant="success" className="me-2" onClick={()=>handleAction(app.id,'approved')}>Approve</Button>
+                        <Button variant="danger" onClick={()=>handleAction(app.id,'rejected')}>Reject</Button>
                       </td>
                     </tr>
                   ))}
