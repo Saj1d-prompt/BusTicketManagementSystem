@@ -7,7 +7,9 @@ const CreateCompanyAcc = () => {
   const [loading, setLoading] = React.useState(true);
   const { user } = useContext(AuthContext);
   const [message, setMessage] = React.useState(null);
-
+  const [showModal, setShowModal] = React.useState(false);
+  const [selectedApp, setSelectedApp] = React.useState(null);
+  const [selectedAction, setSelectedAction] = React.useState(null);
 
   const fetchApplications = async () => {
     try {
