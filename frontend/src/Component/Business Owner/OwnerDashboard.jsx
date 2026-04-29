@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Owner = () => {
+const OwnerDashboard = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Owner = () => {
   )
 }
 
-export default Owner
+export default OwnerDashboard
