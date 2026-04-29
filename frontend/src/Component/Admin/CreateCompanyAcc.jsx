@@ -39,6 +39,11 @@ const CreateCompanyAcc = () => {
     }
   }, [user]);
 
+  const openModal = (id, action) => {
+    setSelectedApp(id);
+    setSelectedAction(action);
+    setShowModal(true);
+  };
   const handleAction = async (id, action) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${id}`, {
