@@ -6,6 +6,7 @@ use App\Http\Controllers\supportController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyOwnerController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -19,4 +20,8 @@ Route::post('/login', [UserController::class, 'login']);
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::get('/companyApplications', [AdminController::class, 'getCompanyAccApplications']);
     Route::post('/updateCompanyAccStatus/{id}', [AdminController::class, 'updateCompanyAccStatus']);
+});
+
+Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
+    Route::get('/companyStatus', [CompanyOwnerController::class, 'getCompanyStatus']);
 });
