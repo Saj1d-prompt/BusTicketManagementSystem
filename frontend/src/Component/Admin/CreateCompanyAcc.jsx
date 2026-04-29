@@ -44,32 +44,36 @@ const CreateCompanyAcc = () => {
     setSelectedAction(action);
     setShowModal(true);
   };
-  const handleAction = async (id, action) => {
+  const handleAction = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${selectedApp}`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${user.token}`
         },
-        body: JSON.stringify({ status: action })
+        body: JSON.stringify({ status: selectedAction })
       });
       const result = await response.json();
       if (result.status === 200) {
-        setMessage({ text: `Application ${action} successfully`, type: "success" });
+        setMessage({ text: `Application ${selectedAction} successfully`, type: "success" });
         fetchApplications();
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage({ text: `Failed to ${action} application`, type: "danger" });
+        setMessage({ text: `Failed to ${selectedAction} application`, type: "danger" });
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       }
     } catch (error) {
-      console.error(`Error ${action} application:`, error);
+      console.error(`Error ${selectedAction} application:`, error);
+    }finally{
+      setShowModal(false);
+      setSelectedAction(null);
+      setSelectedApp(null);
     }
   }
   return (
@@ -120,8 +124,8 @@ const CreateCompanyAcc = () => {
                       <td>{app.phone}</td>
                       <td>{app.email}</td>
                       <td>
-                        <Button variant="success" className="me-2" onClick={() => handleAction(app.id, 'approved')}>Approve</Button>
-                        <Button variant="danger" onClick={() => handleAction(app.id, 'rejected')}>Reject</Button>
+                        <Button variant="success" className="me-2" onClick={() => openModal(app.id, 'approved')}>Approve</Button>
+                        <Button variant="danger" onClick={() => openModal(app.id, 'rejected')}>Reject</Button>
                       </td>
                     </tr>
                   ))}
@@ -130,6 +134,7 @@ const CreateCompanyAcc = () => {
             )}
           </Card.Body>
         </Card>
+        
       </Container>
     </div>
   )
