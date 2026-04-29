@@ -134,7 +134,28 @@ const CreateCompanyAcc = () => {
             )}
           </Card.Body>
         </Card>
-        
+        <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Confirm Action</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            Are you sure you want to <strong>{selectedAction}</strong> this application?
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button variant="secondary" onClick={() => setShowModal(false)}>
+              Cancel
+            </Button>
+
+            <Button
+              variant={selectedAction === 'approved' ? 'success' : 'danger'}
+              onClick={handleAction}
+            >
+              Yes, {selectedAction}
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </div>
   )
