@@ -6,6 +6,7 @@ import SelectRegistration from './Component/Login and Registration/SelectRegistr
 import Registration from './Component/Login and Registration/Registration';
 import Login from './Component/Login and Registration/Login';
 import AdminDashboard from './Component/Admin/adminDashboard';
+import OwnerDashboard from './Component/Business Owner/OwnerDashboard';
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/adminDashboard" element={<AdminDashboard />} />
+          <Route path="/companyDashboard" element={<OwnerDashboard />} />
         </Routes>
       </BrowserRouter>
 

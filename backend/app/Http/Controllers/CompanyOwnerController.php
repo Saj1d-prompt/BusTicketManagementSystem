@@ -9,7 +9,7 @@ class CompanyOwnerController extends Controller
 {
     public function getCompanyStatus(Request $request)
     {
-        $company = Company::where('user_id', $request->user()->id)->first();
+        $company = Company::where('id', $request->user()->company_id)->first();
 
         if (!$company) {
             return response()->json(['status' => 404, 'message' => 'Company not found'], 404);
