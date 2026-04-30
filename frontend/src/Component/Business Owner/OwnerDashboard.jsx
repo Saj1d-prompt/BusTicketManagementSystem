@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import AddOperator from './AddOperator'
 import { AuthContext } from '../Context/AuthContext';
 import { useContext } from 'react';
@@ -29,8 +29,12 @@ const OwnerDashboard = () => {
     }
     setLoading(false);
   };
-
-
+  useEffect(() => {
+    if (user && user.role === 'company') {
+      fetchCompanyStatus();
+    }
+  }, [user]);
+  
   return (
     <div>
       <AddOperator />
