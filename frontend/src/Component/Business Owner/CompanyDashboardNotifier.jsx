@@ -16,7 +16,6 @@ const CompanyDashboardNotifier = () => {
                     </Card.Body>
                 </Card>
             </Container>
-
         </div>
     )
 }
