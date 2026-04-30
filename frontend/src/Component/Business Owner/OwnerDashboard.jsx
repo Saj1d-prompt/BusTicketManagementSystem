@@ -3,6 +3,7 @@ import AddOperator from './AddOperator'
 import { AuthContext } from '../Context/AuthContext';
 import { useContext } from 'react';
 import { useState } from 'react';
+import CompanyDashboardNotifier from './CompanyDashboardNotifier';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -35,6 +36,38 @@ const OwnerDashboard = () => {
     }
   }, [user]);
   
+  if (loading) return <Spinner animation="border" className="d-block mx-auto mt-5" />;
+    if (!companyInfo) return <Alert variant="warning">No company found.</Alert>;
+
+    if (companyInfo.status === 'pending') {
+        return <CompanyDashboardNotifier
+            icon="bi-hourglass-split"
+            title="Application Under Review"
+            message={`Thank you for registering ${companyInfo.company_name}. Your application is currently under process.`}
+            colorClass="text-warning"
+        />;
+    }
+
+    if (companyInfo.status === 'rejected') {
+        return <CompanyDashboardNotifier
+            icon="bi-x-circle"
+            title="Application Rejected"
+            message={`Unfortunately, the application for ${companyInfo.company_name} has been rejected.`}
+            colorClass="text-danger"
+            footerText="Please contact the Head Office for further details."
+        />;
+    }
+
+    if (companyInfo.status === 'suspended') {
+        return <CompanyDashboardNotifier
+            icon="bi-exclamation-triangle"
+            title="Account Suspended"
+            message={`The account for ${companyInfo.company_name} is currently suspended.`}
+            colorClass="text-danger"
+            footerText="Please contact the Head Office immediately to resolve this issue."
+        />;
+    }
+
   return (
     <div>
       <AddOperator />
