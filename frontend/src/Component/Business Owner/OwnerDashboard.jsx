@@ -4,6 +4,7 @@ import { AuthContext } from '../Context/AuthContext';
 import { useContext } from 'react';
 import { useState } from 'react';
 import CompanyDashboardNotifier from './CompanyDashboardNotifier';
+import { Alert, Spinner } from 'react-bootstrap';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
