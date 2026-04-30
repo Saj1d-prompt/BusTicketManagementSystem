@@ -1,6 +1,7 @@
 import React from 'react'
+import { Card, Container } from 'react-bootstrap';
 
-const CompanyDashboardNotifier = () => {
+const CompanyDashboardNotifier = ({ icon, title, message, colorClass, footerText }) => {
     return (
         <div>
             <Container className="py-5">
