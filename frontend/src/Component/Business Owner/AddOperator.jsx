@@ -47,6 +47,14 @@ const AddOperator = () => {
                             placeholder="Create password"
                         />
                     </Form.Group>
+                    <Button variant="danger" type="submit" className="w-100 fw-semibold"
+                        style={{
+                            padding: "10px",
+                            borderRadius: "8px",
+                        }}>
+                        Register
+                    </Button>
+
                 </Form>
             </Card>
         </div>
