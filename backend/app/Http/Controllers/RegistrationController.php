@@ -118,7 +118,7 @@ class RegistrationController extends Controller
 
         return response()->json([
             'status' => 200,
-            'message' => 'Your Account has been created successfully',
+            'message' => 'Operators Account has been created successfully',
             'user' => $user
         ], 200);
     }
