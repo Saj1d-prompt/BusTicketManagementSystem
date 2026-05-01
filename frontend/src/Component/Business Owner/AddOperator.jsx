@@ -20,9 +20,25 @@ const AddOperator = () => {
                 },
                 body: JSON.stringify(data),
             });
+            const result = await response.json();
+            if (result.status === 200) {
+                setMessage({ type: 'success', text: result.message });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+                reset();
+            } else {
+                setMessage({ type: 'danger', text: result.message });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         } catch (error) {
             console.error('Error registering operator:', error);
             setMessage({ type: 'danger', text: 'An error occurred. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
         }
     }
     return (
