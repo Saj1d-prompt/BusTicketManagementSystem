@@ -92,7 +92,19 @@ class RegistrationController extends Controller
         }
     }
 
-    public function registerOperator(){
-        //code
+    public function registerOperator(Request $request){
+        $validate = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'phone' => 'nullable|string|max:11',
+            'password' => 'required|string|min:5',
+        ]);
+
+        if ($validate->fails()) {
+            return response()->json([
+                'status' => 422,
+                'message' => $validate->errors()
+            ], 422);
+        }
     }
 }
