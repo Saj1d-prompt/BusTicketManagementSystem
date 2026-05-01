@@ -24,4 +24,5 @@ Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
 
 Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
     Route::get('/companyStatus', [CompanyOwnerController::class, 'getCompanyStatus']);
+    Route::post('/registerOperator', [RegistrationController::class, 'registerOperator']);
 });
