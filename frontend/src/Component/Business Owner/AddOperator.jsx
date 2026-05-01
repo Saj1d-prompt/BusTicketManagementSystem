@@ -12,7 +12,14 @@ const AddOperator = () => {
     const { user } = useContext(AuthContext);
     const onSubmit = async (data) => {
         try {
-
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/registerOperator`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(data),
+            });
         } catch (error) {
             console.error('Error registering operator:', error);
             setMessage({ type: 'danger', text: 'An error occurred. Please try again.' });
