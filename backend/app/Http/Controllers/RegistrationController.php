@@ -92,7 +92,8 @@ class RegistrationController extends Controller
         }
     }
 
-    public function registerOperator(Request $request){
+    public function registerOperator(Request $request)
+    {
         $validate = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -106,5 +107,19 @@ class RegistrationController extends Controller
                 'message' => $validate->errors()
             ], 422);
         }
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = 'operator';
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Your Account has been created successfully',
+            'user' => $user
+        ], 200);
     }
 }
