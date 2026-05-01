@@ -25,6 +25,7 @@ const AddOperator = () => {
                         <Form.Control
                             type="text"
                             placeholder="Enter name"
+                            {...register('name', { required: true })}
                         />
                     </Form.Group>
 
@@ -33,6 +34,7 @@ const AddOperator = () => {
                         <Form.Control
                             type="email"
                             placeholder="Enter email"
+                            {...register('email', { required: true })}
                         />
                     </Form.Group>
 
@@ -41,6 +43,7 @@ const AddOperator = () => {
                         <Form.Control
                             type="text"
                             placeholder="Enter phone number"
+                            {...register('phone', { required: true })}
                         />
                     </Form.Group>
 
@@ -49,6 +52,7 @@ const AddOperator = () => {
                         <Form.Control
                             type="password"
                             placeholder="Create password"
+                            {...register('password', { required: true })}
                         />
                     </Form.Group>
                     <Button variant="danger" type="submit" className="w-100 fw-semibold"
