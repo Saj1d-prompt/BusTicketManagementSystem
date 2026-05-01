@@ -91,4 +91,8 @@ class RegistrationController extends Controller
             ], 500);
         }
     }
+
+    public function registerOperator(){
+        //code
+    }
 }
