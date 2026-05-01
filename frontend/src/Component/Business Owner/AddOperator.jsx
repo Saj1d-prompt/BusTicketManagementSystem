@@ -1,8 +1,12 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { useState } from 'react';
 
 const AddOperator = () => {
+    const { register, handleSubmit, reset } = useForm();
+    const [message, setMessage] = useState(null);
     return (
         <div className="d-flex justify-content-center align-items-center"
             style={{ minHeight: "100vh", backgroundColor: "#f5f7fa" }}>
