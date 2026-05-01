@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card } from 'react-bootstrap';
 import { Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
 
 const AddOperator = () => {
     const { register, handleSubmit, reset } = useForm();
     const [message, setMessage] = useState(null);
+    const { user } = useContext(AuthContext);
+    const onSubmit = async (data) => {
+        try {
+
+        } catch (error) {
+            console.error('Error registering operator:', error);
+            setMessage({ type: 'danger', text: 'An error occurred. Please try again.' });
+        }
+    }
     return (
         <div className="d-flex justify-content-center align-items-center"
             style={{ minHeight: "100vh", backgroundColor: "#f5f7fa" }}>
@@ -19,7 +30,24 @@ const AddOperator = () => {
                 <h4 className="text-center mb-3 fw-bold" style={{ color: "#333" }}>
                     Add Ticket Operator
                 </h4>
-                <Form>
+                {message && (
+                    <div style={{
+                        position: "fixed",
+                        top: "20px",
+                        right: "20px",
+                        minWidth: "250px",
+                        padding: "12px 18px",
+                        borderRadius: "8px",
+                        color: "#fff",
+                        backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                        boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                        zIndex: 9999,
+                        animation: "slideIn 0.3s ease"
+                    }}>
+                        {message.text}
+                    </div>
+                )}
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3 text-start">
                         <Form.Label className="fw-semibold">Full Name</Form.Label>
                         <Form.Control
