@@ -24,6 +24,22 @@ class CompanyOwnerController extends Controller
 
     public function getOperatorList(Request $request)
     {
-        //code
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $operators = User::where('company_id', $companyID)
+            ->where('role', 'operator')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $operators
+        ], 200);
     }
 }
