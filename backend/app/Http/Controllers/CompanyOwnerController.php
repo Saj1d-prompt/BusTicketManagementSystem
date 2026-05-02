@@ -20,4 +20,8 @@ class CompanyOwnerController extends Controller
             'data' => $company
         ], 200);
     }
+
+    public function getOperatorList(Request $request){
+        //code
+    }
 }
