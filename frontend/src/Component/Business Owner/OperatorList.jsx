@@ -17,6 +17,20 @@ const OperatorList = () => {
                         </Link>
                     </Button>
                 </div>
+                <Card className="shadow-sm border-0">
+                    <Card.Body className="p-0">
+                        <Table responsive hover className="align-middle mb-0">
+                            <thead className="table-light">
+                                <tr>
+                                    <th className="ps-4 py-3">Name</th>
+                                    <th className="py-3">Email</th>
+                                    <th className="py-3">Phone</th>
+                                    <th className="text-center pe-4 py-3">Actions</th>
+                                </tr>
+                            </thead>
+                        </Table>
+                    </Card.Body>
+                </Card>
             </Container>
         </div>
     )
