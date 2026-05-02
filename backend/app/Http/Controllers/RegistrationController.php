@@ -113,6 +113,7 @@ class RegistrationController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'operator';
+        $user->company_id = $request->user()->company_id;
         $user->password = Hash::make($request->password);
         $user->save();
 

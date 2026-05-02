@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class CompanyOwnerController extends Controller
 {
@@ -21,7 +22,8 @@ class CompanyOwnerController extends Controller
         ], 200);
     }
 
-    public function getOperatorList(Request $request){
+    public function getOperatorList(Request $request)
+    {
         //code
     }
 }
