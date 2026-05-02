@@ -28,6 +28,34 @@ const OperatorList = () => {
                                     <th className="text-center pe-4 py-3">Actions</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="ps-4 py-3">
+                                        <div className="d-flex align-items-center">
+                                            <div
+                                                className="bg-primary text-white d-flex justify-content-center align-items-center rounded-circle me-3"
+                                                style={{ width: '40px', height: '40px', fontWeight: 'bold' }}
+                                            >
+                                                S
+                                            </div>
+                                            <div>
+                                                <span className="fw-semibold d-block">MR. X</span>
+                                                <small className="text-muted">ID: #1</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>x@gmail.com</td>
+                                    <td>0123456789</td>
+                                    <td className="text-center pe-4">
+                                        <Button variant="outline-primary" className="me-2">
+                                            <i className="bi bi-pencil-square"></i> Edit
+                                        </Button>
+                                        <Button variant="outline-danger" >
+                                            <i className="bi bi-trash"></i> Delete
+                                        </Button>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </Table>
                     </Card.Body>
                 </Card>
