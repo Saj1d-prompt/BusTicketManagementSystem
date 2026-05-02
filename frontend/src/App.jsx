@@ -7,6 +7,7 @@ import Registration from './Component/Login and Registration/Registration';
 import Login from './Component/Login and Registration/Login';
 import AdminDashboard from './Component/Admin/adminDashboard';
 import OwnerDashboard from './Component/Business Owner/OwnerDashboard';
+import OperatorDashboard from './Component/Operator/OperatorDashboard';
 function App() {
   return (
     <>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/adminDashboard" element={<AdminDashboard />} />
           <Route path="/companyDashboard" element={<OwnerDashboard />} />
+          <Route path='/operatorDashboard' element={<OperatorDashboard />} />
         </Routes>
       </BrowserRouter>
 
