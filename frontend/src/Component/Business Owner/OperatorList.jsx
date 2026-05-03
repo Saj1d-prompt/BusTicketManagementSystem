@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { useState } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 const OperatorList = () => {
     const { user } = useContext(AuthContext);
@@ -57,6 +58,17 @@ const OperatorList = () => {
                 </div>
                 <Card className="shadow-sm border-0">
                     <Card.Body className="p-0">
+                    {loading ? (
+                        <div className="text-center py-5">
+                            <Spinner animation="border" variant="primary" />
+                        </div>
+                    ) : operators.length === 0 ? (
+                        <div className="text-center py-5">
+                            <i className="bi bi-people text-muted" style={{ fontSize: '3rem' }}></i>
+                            <h5 className="mt-3 text-muted">No operators found</h5>
+                            <p className="text-muted">You haven't added any staff members yet.</p>
+                        </div>
+                    ) : (
                         <Table responsive hover className="align-middle mb-0">
                             <thead className="table-light">
                                 <tr>
@@ -123,6 +135,7 @@ const OperatorList = () => {
                                 </tr>
                             </tbody>
                         </Table>
+                    )}
                     </Card.Body>
                 </Card>
             </Container>
