@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const OperatorList = () => {
     const { user } = useContext(AuthContext);
@@ -50,6 +51,10 @@ const OperatorList = () => {
             fetchOperators();
         }
     }, [user]);
+
+    const confirmDelete = async () => {
+        //code
+    }
     return (
         <div>
             <Container className="py-5">
@@ -120,6 +125,28 @@ const OperatorList = () => {
                         )}
                     </Card.Body>
                 </Card>
+
+                <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-danger">
+                            <i className="bi bi-exclamation-triangle-fill me-2"></i>Delete Operator
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Are you sure you want to delete the operator account for <strong>{deleteOperator?.name}</strong>?
+                        <p className="text-danger mt-2 mb-0" style={{ fontSize: '0.9rem' }}>
+                            This action is permanent and cannot be undone. They will lose all access to the system immediately.
+                        </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
+                            Cancel
+                        </Button>
+                        <Button variant="danger" onClick={confirmDelete}>
+                            Yes, Delete Operator
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         </div>
     )
