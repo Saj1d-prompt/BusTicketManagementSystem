@@ -53,7 +53,8 @@ const OperatorList = () => {
     }, [user]);
 
     const confirmDelete = async () => {
-        //code
+        if (!deleteOperator) return;
+        setShowDeleteModal(false);
     }
     return (
         <div>
