@@ -58,84 +58,58 @@ const OperatorList = () => {
                 </div>
                 <Card className="shadow-sm border-0">
                     <Card.Body className="p-0">
-                    {loading ? (
-                        <div className="text-center py-5">
-                            <Spinner animation="border" variant="primary" />
-                        </div>
-                    ) : operators.length === 0 ? (
-                        <div className="text-center py-5">
-                            <i className="bi bi-people text-muted" style={{ fontSize: '3rem' }}></i>
-                            <h5 className="mt-3 text-muted">No operators found</h5>
-                            <p className="text-muted">You haven't added any staff members yet.</p>
-                        </div>
-                    ) : (
-                        <Table responsive hover className="align-middle mb-0">
-                            <thead className="table-light">
-                                <tr>
-                                    <th className="ps-4 py-3">Name</th>
-                                    <th className="py-3">Email</th>
-                                    <th className="py-3">Phone</th>
-                                    <th className="text-center pe-4 py-3">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {operators.map((operator) => (
-                                <tr key={operator.id}>
-                                    <td className="ps-4 py-3">
-                                        <div className="d-flex align-items-center">
-                                            <div
-                                                className="bg-primary text-white d-flex justify-content-center align-items-center rounded-circle me-3"
-                                                style={{ width: '40px', height: '40px', fontWeight: 'bold' }}
-                                            >
-                                                {operator.name.charAt(0).toUpperCase()}
-                                            </div>
-                                            <div>
-                                                <span className="fw-semibold d-block">{operator.name}</span>
-                                                <small className="text-muted">ID: #{operator.id}</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>{operator.email}</td>
-                                    <td>{operator.phone || <span className="text-muted fst-italic">Not provided</span>}</td>
-                                    <td className="text-center pe-4">
-                                        <Button variant="outline-primary" className="me-2">
-                                            <i className="bi bi-pencil-square"></i> Edit
-                                        </Button>
-                                        <Button variant="outline-danger" >
-                                            <i className="bi bi-trash"></i> Delete
-                                        </Button>
-                                    </td>
-                                </tr>
-                                ))}
-                                <tr>
-                                    <td className="ps-4 py-3">
-                                        <div className="d-flex align-items-center">
-                                            <div
-                                                className="bg-primary text-white d-flex justify-content-center align-items-center rounded-circle me-3"
-                                                style={{ width: '40px', height: '40px', fontWeight: 'bold' }}
-                                            >
-                                                S
-                                            </div>
-                                            <div>
-                                                <span className="fw-semibold d-block">MR. X</span>
-                                                <small className="text-muted">ID: #1</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>x@gmail.com</td>
-                                    <td>0123456789</td>
-                                    <td className="text-center pe-4">
-                                        <Button variant="outline-primary" className="me-2">
-                                            <i className="bi bi-pencil-square"></i> Edit
-                                        </Button>
-                                        <Button variant="outline-danger" >
-                                            <i className="bi bi-trash"></i> Delete
-                                        </Button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                    )}
+                        {loading ? (
+                            <div className="text-center py-5">
+                                <Spinner animation="border" variant="primary" />
+                            </div>
+                        ) : operators.length === 0 ? (
+                            <div className="text-center py-5">
+                                <i className="bi bi-people text-muted" style={{ fontSize: '3rem' }}></i>
+                                <h5 className="mt-3 text-muted">No operators found</h5>
+                                <p className="text-muted">You haven't added any staff members yet.</p>
+                            </div>
+                        ) : (
+                            <Table responsive hover className="align-middle mb-0">
+                                <thead className="table-light">
+                                    <tr>
+                                        <th className="ps-4 py-3">Name</th>
+                                        <th className="py-3">Email</th>
+                                        <th className="py-3">Phone</th>
+                                        <th className="text-center pe-4 py-3">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {operators.map((operator) => (
+                                        <tr key={operator.id}>
+                                            <td className="ps-4 py-3">
+                                                <div className="d-flex align-items-center">
+                                                    <div
+                                                        className="bg-primary text-white d-flex justify-content-center align-items-center rounded-circle me-3"
+                                                        style={{ width: '40px', height: '40px', fontWeight: 'bold' }}
+                                                    >
+                                                        {operator.name.charAt(0).toUpperCase()}
+                                                    </div>
+                                                    <div>
+                                                        <span className="fw-semibold d-block">{operator.name}</span>
+                                                        <small className="text-muted">ID: #{operator.id}</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>{operator.email}</td>
+                                            <td>{operator.phone || <span className="text-muted fst-italic">Not provided</span>}</td>
+                                            <td className="text-center pe-4">
+                                                <Button variant="outline-primary" className="me-2">
+                                                    <i className="bi bi-pencil-square"></i> Edit
+                                                </Button>
+                                                <Button variant="outline-danger" >
+                                                    <i className="bi bi-trash"></i> Delete
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        )}
                     </Card.Body>
                 </Card>
             </Container>
