@@ -55,6 +55,21 @@ const OperatorList = () => {
     const confirmDelete = async () => {
         if (!deleteOperator) return;
         setShowDeleteModal(false);
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/deleteOperator/${deleteOperator.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            
+        } catch (error) {
+            console.error('Error deleting operator:', error);
+            showMessage('Server error. Please try again.', 'danger');
+        } finally {
+            setDeleteOperator(null);
+        }
     }
     return (
         <div>
