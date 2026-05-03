@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Card, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -26,7 +26,6 @@ const OperatorList = () => {
             } else {
                 setMessage({ type: 'danger', text: result.message || 'Failed to load operators.' });
             }
-
         } catch (error) {
             console.error('Error fetching operators:', error);
             setMessage({ type: 'danger', text: 'Failed to load operators. Please try again.' });
@@ -37,6 +36,11 @@ const OperatorList = () => {
             setLoading(false);
         }
     }
+    useEffect(() => {
+        if (user && user.role === 'company') {
+            fetchOperators();
+        }
+    }, [user]);
     return (
         <div>
             <Container className="py-5">
@@ -63,6 +67,34 @@ const OperatorList = () => {
                                 </tr>
                             </thead>
                             <tbody>
+                                {operators.map((operator) => (
+                                <tr key={operator.id}>
+                                    <td className="ps-4 py-3">
+                                        <div className="d-flex align-items-center">
+                                            <div
+                                                className="bg-primary text-white d-flex justify-content-center align-items-center rounded-circle me-3"
+                                                style={{ width: '40px', height: '40px', fontWeight: 'bold' }}
+                                            >
+                                                {operator.name.charAt(0).toUpperCase()}
+                                            </div>
+                                            <div>
+                                                <span className="fw-semibold d-block">{operator.name}</span>
+                                                <small className="text-muted">ID: #{operator.id}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{operator.email}</td>
+                                    <td>{operator.phone || <span className="text-muted fst-italic">Not provided</span>}</td>
+                                    <td className="text-center pe-4">
+                                        <Button variant="outline-primary" className="me-2">
+                                            <i className="bi bi-pencil-square"></i> Edit
+                                        </Button>
+                                        <Button variant="outline-danger" >
+                                            <i className="bi bi-trash"></i> Delete
+                                        </Button>
+                                    </td>
+                                </tr>
+                                ))}
                                 <tr>
                                     <td className="ps-4 py-3">
                                         <div className="d-flex align-items-center">
