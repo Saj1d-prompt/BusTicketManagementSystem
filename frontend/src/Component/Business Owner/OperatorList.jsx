@@ -1,8 +1,29 @@
 import React from 'react'
 import { Button, Card, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import { useState } from 'react';
 
 const OperatorList = () => {
+    const { user } = useContext(AuthContext);
+    const [operators, setOperators] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState(null);
+
+    const fetchOperators = async () => {
+        try {
+
+        } catch (error) {
+            console.error('Error fetching operators:', error);
+            setMessage({ type: 'danger', text: 'Failed to load operators. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        } finally {
+            setLoading(false);
+        }
+    }
     return (
         <div>
             <Container className="py-5">
