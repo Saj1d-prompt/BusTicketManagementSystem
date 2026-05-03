@@ -42,4 +42,9 @@ class CompanyOwnerController extends Controller
             'data' => $operators
         ], 200);
     }
+
+    public function deleteOperator(Request $request, $id)
+    {
+        
+    }
 }
