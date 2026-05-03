@@ -45,6 +45,32 @@ class CompanyOwnerController extends Controller
 
     public function deleteOperator(Request $request, $id)
     {
-        
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $operator = User::where('id', $id)
+            ->where('company_id', $companyID)
+            ->where('role', 'operator')
+            ->first();
+
+        if (!$operator) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Operator not found'
+            ], 404);
+        }
+
+        $operator->delete();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Operator deleted successfully'
+        ], 200);
     }
 }
