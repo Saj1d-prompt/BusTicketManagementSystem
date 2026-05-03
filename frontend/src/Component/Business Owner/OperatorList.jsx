@@ -12,6 +12,14 @@ const OperatorList = () => {
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState(null);
 
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [deleteOperator, setDeleteOperator] = useState(null);
+
+    const initiateDelete = (operator) => {
+        setDeleteOperator(operator);
+        setShowDeleteModal(true);
+    };
+
     const fetchOperators = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/operatorList`, {
@@ -98,10 +106,10 @@ const OperatorList = () => {
                                             <td>{operator.email}</td>
                                             <td>{operator.phone || <span className="text-muted fst-italic">Not provided</span>}</td>
                                             <td className="text-center pe-4">
-                                                <Button variant="outline-primary" className="me-2">
+                                                {/* <Button variant="outline-primary" className="me-2">
                                                     <i className="bi bi-pencil-square"></i> Edit
-                                                </Button>
-                                                <Button variant="outline-danger" >
+                                                </Button> */}
+                                                <Button variant="outline-danger" onClick={() => initiateDelete(operator)}>
                                                     <i className="bi bi-trash"></i> Delete
                                                 </Button>
                                             </td>
