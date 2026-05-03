@@ -13,6 +13,13 @@ const OperatorList = () => {
 
     const fetchOperators = async () => {
         try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/operatorList`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
 
         } catch (error) {
             console.error('Error fetching operators:', error);
