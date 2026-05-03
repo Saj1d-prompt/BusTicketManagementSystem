@@ -20,6 +20,12 @@ const OperatorList = () => {
                     'Authorization': `Bearer ${user.token}`
                 }
             });
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                setOperators(result.data);
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to load operators.' });
+            }
 
         } catch (error) {
             console.error('Error fetching operators:', error);
