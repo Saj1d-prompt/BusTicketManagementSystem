@@ -63,7 +63,13 @@ const OperatorList = () => {
                     'Authorization': `Bearer ${user.token}`
                 }
             });
-            
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                setMessage({ type: 'success', text: result.message });
+                setOperators(operators.filter(op => op.id !== deleteOperator.id));
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to delete operator.' });
+            }
         } catch (error) {
             console.error('Error deleting operator:', error);
             showMessage('Server error. Please try again.', 'danger');
