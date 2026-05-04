@@ -11,6 +11,25 @@ const CompanyList = () => {
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState(null);
+    const fetchCompanies = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/allCompanies`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const data = await response.json();
+        } catch (error) {
+            console.error('Error fetching companies:', error);
+            setMessage({ type: 'danger', text: 'Failed to load companies. Please try again later.' });
+        } finally {
+            setLoading(false);
+        }
+    };
+    
     return (
         <div>
             <Container className="py-5">
