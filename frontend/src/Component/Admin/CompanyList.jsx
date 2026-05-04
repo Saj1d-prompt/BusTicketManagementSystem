@@ -91,7 +91,7 @@ const CompanyList = () => {
                                                 {company.status === 'suspended' && (
                                                     <Button
                                                         variant="outline-success"
-                                                        onClick={() => initiateAction(company, 'activate')}
+                                                        onClick={() => initiateAction(company, 'approved')}
                                                     >
                                                         <i className="bi bi-check-circle me-1"></i> Activate
                                                     </Button>
@@ -100,7 +100,7 @@ const CompanyList = () => {
                                                 {(company.status === 'approved' || company.status === 'accepted') && (
                                                     <Button
                                                         variant="outline-danger"
-                                                        onClick={() => initiateAction(company, 'suspend')}
+                                                        onClick={() => initiateAction(company, 'suspended')}
                                                     >
                                                         <i className="bi bi-slash-circle me-1"></i> Suspend
                                                     </Button>
