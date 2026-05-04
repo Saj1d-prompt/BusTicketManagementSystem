@@ -5,6 +5,7 @@ import { AuthContext } from '../Context/AuthContext';
 import { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import { useEffect } from 'react';
 
 const CompanyList = () => {
     const { user } = useContext(AuthContext);
@@ -51,6 +52,15 @@ const CompanyList = () => {
                 </div>
                 <Card className="shadow-sm border-0">
                     <Card.Body className="p-0">
+                        {loading ? (
+                            <div className="text-center py-5">
+                                <Spinner animation="border" variant="primary" />
+                            </div>
+                        ) : companies.length === 0 ? (
+                            <div className="text-center py-5">
+                                <h5 className="text-muted">No companies found in the system.</h5>
+                            </div>
+                        ) : (
                         <Table responsive hover className="align-middle mb-0">
                             <thead className="table-light">
                                 <tr className="text-center">
@@ -64,6 +74,7 @@ const CompanyList = () => {
                             </thead>
 
                         </Table>
+                    )}
                     </Card.Body>
                 </Card>
             </Container>
