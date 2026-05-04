@@ -42,6 +42,18 @@ class AdminController extends Controller
 
     public function getAllCompanies()
     {
-        
+        $companies = Company::where('status', 'approved')
+        -> orWhere('status', 'suspended')
+        ->leftJoin('users', 'companies.id', '=', 'users.company_id')
+        ->select('companies.id', 'companies.company_name',
+         'companies.license_number', 'companies.document_path',
+        'users.name', 'users.email',
+        'users.phone')
+        ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $companies
+        ], 200);
     }
 }
