@@ -41,6 +41,11 @@ const CompanyList = () => {
             fetchCompanies();
         }
     }, [user]);
+
+    const initiateAction = async (company, newStatus) => {
+        
+    };
+
     return (
         <div>
             <Container className="py-5">
