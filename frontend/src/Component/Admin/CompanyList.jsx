@@ -43,7 +43,27 @@ const CompanyList = () => {
     }, [user]);
 
     const initiateAction = async (company, newStatus) => {
-        
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${company.id}`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({ status: newStatus })
+            });
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                setCompanies(companies.map(c => c.id === company.id ? { ...c, status: newStatus } : c));
+                setMessage({ type: 'success', text: 'Company status updated successfully.' });
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to update company status.' });
+            }
+        } catch (error) {
+            console.error('Error updating company status:', error);
+            setMessage({ type: 'danger', text: 'Failed to update company status. Please try again later.' });
+        }
     };
 
     return (
