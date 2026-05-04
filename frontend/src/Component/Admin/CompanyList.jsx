@@ -16,6 +16,23 @@ const CompanyList = () => {
                         <p className="text-muted">Suspend or activate system access for transport companies.</p>
                     </div>
                 </div>
+                <Card className="shadow-sm border-0">
+                    <Card.Body className="p-0">
+                        <Table responsive hover className="align-middle mb-0">
+                            <thead className="table-light">
+                                <tr className="text-center">
+                                    <th className="ps-4 py-3 text-start">Company Name</th>
+                                    <th className="py-3">License No.</th>
+                                    <th className="py-3">Owner</th>
+                                    <th className="py-3">Email</th>
+                                    <th className="py-3">Status</th>
+                                    <th className="pe-4 py-3">Action</th>
+                                </tr>
+                            </thead>
+
+                        </Table>
+                    </Card.Body>
+                </Card>
             </Container>
         </div>
     )
