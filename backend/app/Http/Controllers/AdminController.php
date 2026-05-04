@@ -44,9 +44,12 @@ class AdminController extends Controller
     {
         $companies = Company::where('status', 'approved')
         -> orWhere('status', 'suspended')
-        ->leftJoin('users', 'companies.id', '=', 'users.company_id')
+        ->leftJoin('users', function ($join) {
+            $join->on('companies.id', '=', 'users.company_id')
+                  ->where('users.role', '=', 'company');
+        })
         ->select('companies.id', 'companies.company_name',
-         'companies.license_number', 'companies.document_path',
+         'companies.license_number', 'companies.status',
         'users.name', 'users.email',
         'users.phone')
         ->get();
