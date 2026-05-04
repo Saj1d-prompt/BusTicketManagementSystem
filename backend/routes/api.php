@@ -20,6 +20,7 @@ Route::post('/login', [UserController::class, 'login']);
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
     Route::get('/companyApplications', [AdminController::class, 'getCompanyAccApplications']);
     Route::post('/updateCompanyAccStatus/{id}', [AdminController::class, 'updateCompanyAccStatus']);
+    Route::get('/allCompanies', [AdminController::class, 'getAllCompanies']);
 });
 
 Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
