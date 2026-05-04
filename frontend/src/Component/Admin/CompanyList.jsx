@@ -7,6 +7,10 @@ import { Spinner } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 
 const CompanyList = () => {
+    const { user } = useContext(AuthContext);
+    const [companies, setCompanies] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState(null);
     return (
         <div>
             <Container className="py-5">
