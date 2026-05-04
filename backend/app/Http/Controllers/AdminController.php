@@ -39,4 +39,9 @@ class AdminController extends Controller
             'message' => 'Company account status updated successfully'
         ], 200);
     }
+
+    public function getAllCompanies()
+    {
+        
+    }
 }
