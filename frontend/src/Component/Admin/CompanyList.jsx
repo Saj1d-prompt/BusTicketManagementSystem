@@ -22,7 +22,7 @@ const CompanyList = () => {
                     'Authorization': `Bearer ${user.token}`
                 }
             });
-            const data = await response.json();
+            const result = await response.json();
             if (response.ok && result.status === 200) {
                 setCompanies(result.data);
             } else {
@@ -61,20 +61,56 @@ const CompanyList = () => {
                                 <h5 className="text-muted">No companies found in the system.</h5>
                             </div>
                         ) : (
-                        <Table responsive hover className="align-middle mb-0">
-                            <thead className="table-light">
-                                <tr className="text-center">
-                                    <th className="ps-4 py-3 text-start">Company Name</th>
-                                    <th className="py-3">License No.</th>
-                                    <th className="py-3">Owner</th>
-                                    <th className="py-3">Email</th>
-                                    <th className="py-3">Status</th>
-                                    <th className="pe-4 py-3">Action</th>
-                                </tr>
-                            </thead>
+                            <Table responsive hover className="align-middle mb-0">
+                                <thead className="table-light">
+                                    <tr className="text-center">
+                                        <th className="ps-4 py-3 text-start">Company Name</th>
+                                        <th className="py-3">License No.</th>
+                                        <th className="py-3">Owner</th>
+                                        <th className="py-3">Email</th>
+                                        <th className="py-3">Status</th>
+                                        <th className="pe-4 py-3">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {companies.map((company) => (
+                                        <tr key={company.id} className="text-center">
+                                            <td className="ps-4 py-3 text-start fw-semibold">{company.company_name}</td>
+                                            <td>{company.license_number}</td>
+                                            <td>{company.name}</td>
+                                            <td>{company.email}</td>
+                                            <td>
+                                                <Badge
+                                                    bg={company.status === 'approved' || company.status === 'accepted' ? 'success' : company.status === 'suspended' ? 'danger' : 'warning'}
+                                                    className="px-3 py-2 rounded-pill"
+                                                >
+                                                    {company.status.charAt(0).toUpperCase() + company.status.slice(1)}
+                                                </Badge>
+                                            </td>
+                                            <td className="pe-4">
+                                                {company.status === 'suspended' && (
+                                                    <Button
+                                                        variant="outline-success"
+                                                        onClick={() => initiateAction(company, 'activate')}
+                                                    >
+                                                        <i className="bi bi-check-circle me-1"></i> Activate
+                                                    </Button>
+                                                )}
 
-                        </Table>
-                    )}
+                                                {(company.status === 'approved' || company.status === 'accepted') && (
+                                                    <Button
+                                                        variant="outline-danger"
+                                                        onClick={() => initiateAction(company, 'suspend')}
+                                                    >
+                                                        <i className="bi bi-slash-circle me-1"></i> Suspend
+                                                    </Button>
+                                                )}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </Table>
+                        )}
                     </Card.Body>
                 </Card>
             </Container>
