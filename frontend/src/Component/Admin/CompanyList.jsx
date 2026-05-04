@@ -22,6 +22,11 @@ const CompanyList = () => {
                 }
             });
             const data = await response.json();
+            if (response.ok && result.status === 200) {
+                setCompanies(result.data);
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to load companies.' });
+            }
         } catch (error) {
             console.error('Error fetching companies:', error);
             setMessage({ type: 'danger', text: 'Failed to load companies. Please try again later.' });
@@ -29,7 +34,12 @@ const CompanyList = () => {
             setLoading(false);
         }
     };
-    
+
+    useEffect(() => {
+        if (user && user.role === 'admin') {
+            fetchCompanies();
+        }
+    }, [user]);
     return (
         <div>
             <Container className="py-5">
