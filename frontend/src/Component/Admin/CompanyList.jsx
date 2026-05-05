@@ -12,6 +12,10 @@ const CompanyList = () => {
     const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState(null);
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedCompany, setSelectedCompany] = useState(null);
+    const [actionType, setActionType] = useState('');
     const fetchCompanies = async () => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/allCompanies`, {
