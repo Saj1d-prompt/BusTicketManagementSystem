@@ -152,6 +152,39 @@ const CompanyList = () => {
                         )}
                     </Card.Body>
                 </Card>
+                <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                    <Modal.Header closeButton>
+                        <Modal.Title className={actionType === 'suspended' ? "text-danger" : "text-success"}>
+                            {actionType === 'suspended' ? 'Suspend Company' : 'Activate Company'}
+                        </Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        Are you sure you want to{' '}
+                        <strong>{actionType === 'suspended' ? 'suspend' : 'activate'}</strong>{' '}
+                        the account for{' '}
+                        <span className="fw-bold">{selectedCompany?.company_name}</span>?
+
+                        {actionType === 'suspended' && (
+                            <p className="text-danger mt-2 mb-0" style={{ fontSize: '0.9rem' }}>
+                                They will immediately lose access to their owner dashboard and operations.
+                            </p>
+                        )}
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={() => setShowModal(false)}>
+                            Cancel
+                        </Button>
+
+                        <Button
+                            variant={actionType === 'suspended' ? 'danger' : 'success'}
+                            onClick={confirmAction}
+                        >
+                            Yes, {actionType === 'suspended' ? 'Suspend' : 'Activate'}
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </Container>
         </div>
     )
