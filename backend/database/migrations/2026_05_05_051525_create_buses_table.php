@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
+            $table->string('bus_name');
+            $table->string('brand')->nullable();
+            $table->string('registration_number')->unique();
+            $table->enum('type', ['AC', 'Non-AC','Sleeper']);
+            $table->integer('total_seats');
+            $table->enum('status', ['active', 'maintainance','retired'])->default('active');
             $table->timestamps();
         });
     }
