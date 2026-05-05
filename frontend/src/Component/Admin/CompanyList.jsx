@@ -46,7 +46,14 @@ const CompanyList = () => {
         }
     }, [user]);
 
-    const initiateAction = async (company, newStatus) => {
+    const initiateAction = (company, action) => {
+        setSelectedCompany(company);
+        setActionType(action);
+        setShowModal(true);
+    };
+
+
+    const initiateAction2 = async (company, newStatus) => {
         try {
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${company.id}`, {
                 method: 'POST',
