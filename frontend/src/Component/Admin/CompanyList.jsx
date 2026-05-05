@@ -52,10 +52,12 @@ const CompanyList = () => {
         setShowModal(true);
     };
 
+    const confirmAction = async () => {
+        if (!selectedCompany) return;
 
-    const initiateAction2 = async (company, newStatus) => {
+        const newStatus = actionType;
         try {
-            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${company.id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCompanyAccStatus/${selectedCompany.id}`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -66,8 +68,9 @@ const CompanyList = () => {
             });
             const result = await response.json();
             if (response.ok && result.status === 200) {
-                setCompanies(companies.map(c => c.id === company.id ? { ...c, status: newStatus } : c));
+                setCompanies(companies.map(c => c.id === selectedCompany.id ? { ...c, status: newStatus } : c));
                 setMessage({ type: 'success', text: 'Company status updated successfully.' });
+                setShowModal(false);
             } else {
                 setMessage({ type: 'danger', text: result.message || 'Failed to update company status.' });
             }
