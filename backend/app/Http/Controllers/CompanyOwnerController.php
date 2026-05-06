@@ -73,4 +73,8 @@ class CompanyOwnerController extends Controller
             'message' => 'Operator deleted successfully'
         ], 200);
     }
+
+    public function addBus(){
+        //code
+    }
 }
