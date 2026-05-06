@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { Card } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
 const AddBus = () => {
   return (
@@ -16,6 +17,23 @@ const AddBus = () => {
               <p className="text-muted mb-0">Enter the vehicle details to add it to your fleet.</p>
             </div>
           </div>
+          <Form>
+            <h5 className="mb-3 text-primary">Core Information</h5>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-semibold">Bus Name/Model <span className="text-danger">*</span></Form.Label>
+                  <Form.Control type="text" name="bus_name" placeholder="e.g., Express Runner" required />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label className="fw-semibold">Brand/Manufacturer</Form.Label>
+                  <Form.Control type="text" name="brand" placeholder="e.g., Scania, Hino, Volvo" />
+                </Form.Group>
+              </Col>
+            </Row>
+          </Form>
         </Card.Body>
       </Card>
     </Container>
