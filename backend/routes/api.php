@@ -28,4 +28,5 @@ Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
     Route::post('/registerOperator', [RegistrationController::class, 'registerOperator']);
     Route::get('/operatorList', [CompanyOwnerController::class, 'getOperatorList']);
     Route::delete('/deleteOperator/{id}', [CompanyOwnerController::class, 'deleteOperator']);
+    Route::post('/addBus', [CompanyOwnerController::class, 'addBus']);
 });
