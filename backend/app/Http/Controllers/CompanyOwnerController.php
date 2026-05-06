@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Bus;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyOwnerController extends Controller
 {
@@ -74,7 +76,21 @@ class CompanyOwnerController extends Controller
         ], 200);
     }
 
-    public function addBus(){
-        //code
+    public function addBus(Request $request){
+        $validator = Validator::make($request->all(), [
+            'bus_name' => 'required|string',
+            'brand' => 'string',
+            'registration_number' => 'required|string|unique:buses',
+            'type' => 'required|string',
+            'total_seats' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 400);
+        }
     }
 }
