@@ -92,5 +92,19 @@ class CompanyOwnerController extends Controller
                 'errors' => $validator->errors()
             ], 400);
         }
+
+        $bus = new Bus();
+        $bus->bus_name = $request->bus_name;
+        $bus->brand = $request->brand;
+        $bus->registration_number = $request->registration_number;
+        $bus->type = $request->type;
+        $bus->total_seats = $request->total_seats;
+        $bus->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Bus added successfully',
+            'data' => $bus
+        ], 200);
     }
 }
