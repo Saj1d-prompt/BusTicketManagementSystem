@@ -9,7 +9,7 @@ const AddBus = () => {
       <Card className="shadow-sm border-0 mx-auto" style={{ maxWidth: '900px' }}>
         <Card.Body className="p-4 p-md-5">
           <div className="d-flex align-items-center mb-4 border-bottom pb-3">
-            <div className="bg-primary bg-opacity-10 text-primary rounded-circle p-3 me-3">
+            <div className="bg-danger text-primary rounded-circle p-3 me-3">
               <i className="bi bi-bus-front fs-4"></i>
             </div>
             <div>
@@ -18,7 +18,7 @@ const AddBus = () => {
             </div>
           </div>
           <Form>
-            <h5 className="mb-3 text-primary">Core Information</h5>
+            <h5 className="mb-3 text-danger">Core Information</h5>
             <Row>
               <Col md={6}>
                 <Form.Group className="mb-3">
@@ -57,6 +57,11 @@ const AddBus = () => {
                 </Form.Group>
               </Col>
             </Row>
+            <div className="d-flex justify-content-center border-top pt-4">
+              <Button variant="danger" type="submit" className="px-5 py-2 fw-bold shadow-sm">
+                Save Bus
+              </Button>
+            </div>
           </Form>
         </Card.Body>
       </Card>
