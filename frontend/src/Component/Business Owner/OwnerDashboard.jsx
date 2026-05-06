@@ -6,6 +6,7 @@ import { useState } from 'react';
 import CompanyDashboardNotifier from './CompanyDashboardNotifier';
 import { Alert, Spinner } from 'react-bootstrap';
 import OperatorList from './OperatorList';
+import AddBus from './AddBus';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -72,8 +73,9 @@ const OwnerDashboard = () => {
 
   return (
     <div>
-      <OperatorList />
+      {/* <OperatorList /> */}
       {/* <AddOperator /> */}
+      <AddBus />
     </div>
   )
 }
