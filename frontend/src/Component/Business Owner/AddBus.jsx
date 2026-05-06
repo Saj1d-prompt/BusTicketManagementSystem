@@ -33,6 +33,30 @@ const AddBus = () => {
                 </Form.Group>
               </Col>
             </Row>
+            <Row>
+              <Col md={4}>
+                <Form.Group className="mb-4">
+                  <Form.Label className="fw-semibold">Registration Number <span className="text-danger">*</span></Form.Label>
+                  <Form.Control type="text" name="registration_number" placeholder="e.g., DHAKA-B-11-2233" required style={{ textTransform: 'uppercase' }} />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group className="mb-4">
+                  <Form.Label className="fw-semibold">Bus Type <span className="text-danger">*</span></Form.Label>
+                  <Form.Select name="type" required >
+                    <option value="Non-AC">Non-AC Coach</option>
+                    <option value="AC">AC Coach</option>
+                    <option value="Sleeper">AC Sleeper</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group className="mb-4">
+                  <Form.Label className="fw-semibold">Total Seats <span className="text-danger">*</span></Form.Label>
+                  <Form.Control type="number" name="total_seats" placeholder="e.g., 40" min="10" max="60" required />
+                </Form.Group>
+              </Col>
+            </Row>
           </Form>
         </Card.Body>
       </Card>
