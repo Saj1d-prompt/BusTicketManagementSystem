@@ -46,6 +46,24 @@ const AddBus = () => {
     <Container className="py-5">
       <Card className="shadow-sm border-0 mx-auto" style={{ maxWidth: '900px' }}>
         <Card.Body className="p-4 p-md-5">
+          {message && (
+            <div style={{
+              position: "fixed",
+              top: "20px",
+              right: "20px",
+              minWidth: "250px",
+              padding: "12px 18px",
+              borderRadius: "8px",
+              color: "#fff",
+              backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              zIndex: 9999,
+              animation: "slideIn 0.3s ease"
+            }}>
+              {message.text}
+            </div>
+          )}
+
           <div className="d-flex align-items-center mb-4 border-bottom pb-3">
             <div className="bg-danger text-primary rounded-circle p-3 me-3">
               <i className="bi bi-bus-front fs-4"></i>
