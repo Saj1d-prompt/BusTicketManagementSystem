@@ -99,6 +99,7 @@ class CompanyOwnerController extends Controller
         $bus->registration_number = $request->registration_number;
         $bus->type = $request->type;
         $bus->total_seats = $request->total_seats;
+        $bus->company_id = $request->user()->company_id;
         $bus->save();
 
         return response()->json([
