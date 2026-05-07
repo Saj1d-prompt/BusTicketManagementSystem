@@ -29,13 +29,13 @@ const AddBus = () => {
               <Col md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label className="fw-semibold">Bus Name/Model <span className="text-danger">*</span></Form.Label>
-                  <Form.Control type="text" name="bus_name" placeholder="e.g., Express Runner" required />
+                  <Form.Control type="text" name="bus_name" {...register("bus_name", { required: true })} placeholder="e.g., Express Runner" required />
                 </Form.Group>
               </Col>
               <Col md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label className="fw-semibold">Brand/Manufacturer</Form.Label>
-                  <Form.Control type="text" name="brand" placeholder="e.g., Scania, Hino, Volvo" />
+                  <Form.Control type="text" name="brand" {...register("brand")} placeholder="e.g., Scania, Hino, Volvo" />
                 </Form.Group>
               </Col>
             </Row>
@@ -43,13 +43,13 @@ const AddBus = () => {
               <Col md={4}>
                 <Form.Group className="mb-4">
                   <Form.Label className="fw-semibold">Registration Number <span className="text-danger">*</span></Form.Label>
-                  <Form.Control type="text" name="registration_number" placeholder="e.g., DHAKA-B-11-2233" required style={{ textTransform: 'uppercase' }} />
+                  <Form.Control type="text" name="registration_number" {...register("registration_number", { required: true })} placeholder="e.g., DHAKA-B-11-2233" required style={{ textTransform: 'uppercase' }} />
                 </Form.Group>
               </Col>
               <Col md={4}>
                 <Form.Group className="mb-4">
                   <Form.Label className="fw-semibold">Bus Type <span className="text-danger">*</span></Form.Label>
-                  <Form.Select name="type" required >
+                  <Form.Select name="type" {...register("type", { required: true })} required >
                     <option value="Non-AC">Non-AC Coach</option>
                     <option value="AC">AC Coach</option>
                     <option value="Sleeper">AC Sleeper</option>
@@ -59,7 +59,7 @@ const AddBus = () => {
               <Col md={4}>
                 <Form.Group className="mb-4">
                   <Form.Label className="fw-semibold">Total Seats <span className="text-danger">*</span></Form.Label>
-                  <Form.Control type="number" name="total_seats" placeholder="e.g., 40" min="10" max="60" required />
+                  <Form.Control type="number" name="total_seats" {...register("total_seats", { required: true })} placeholder="e.g., 40" min="10" max="60" required />
                 </Form.Group>
               </Col>
             </Row>
