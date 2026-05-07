@@ -2,8 +2,9 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { Card } from 'react-bootstrap';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-
+import { useForm } from 'react-hook-form';
 const AddBus = () => {
+  const {register, handleSubmit, reset} = useForm();
   return (
     <Container className="py-5">
       <Card className="shadow-sm border-0 mx-auto" style={{ maxWidth: '900px' }}>
