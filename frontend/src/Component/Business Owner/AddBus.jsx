@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import { Container } from 'react-bootstrap'
 import { Card } from 'react-bootstrap';
 import { Form, Button, Row, Col } from 'react-bootstrap';
@@ -12,7 +12,22 @@ const AddBus = () => {
   const { user } = useContext(AuthContext);
 
   const onSubmit = async (data) => {
-    
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/addBus`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      console.error('Error adding bus:', error);
+      setMessage({ type: 'danger', text: 'An error occurred. Please try again.' });
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
   }
   return (
     <Container className="py-5">
