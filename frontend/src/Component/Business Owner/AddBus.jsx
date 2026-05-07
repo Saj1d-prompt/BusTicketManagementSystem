@@ -3,8 +3,13 @@ import { Container } from 'react-bootstrap'
 import { Card } from 'react-bootstrap';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
 const AddBus = () => {
-  const {register, handleSubmit, reset} = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const [message, setMessage] = useState(null);
+  const { user } = useContext(AuthContext);
   return (
     <Container className="py-5">
       <Card className="shadow-sm border-0 mx-auto" style={{ maxWidth: '900px' }}>
