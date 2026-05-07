@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('type', ['AC', 'Non-AC','Sleeper']);
             $table->integer('total_seats');
             $table->enum('status', ['active', 'maintainance','retired'])->default('active');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
