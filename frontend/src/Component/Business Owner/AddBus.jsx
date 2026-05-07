@@ -10,6 +10,10 @@ const AddBus = () => {
   const { register, handleSubmit, reset } = useForm();
   const [message, setMessage] = useState(null);
   const { user } = useContext(AuthContext);
+
+  const onSubmit = async (data) => {
+    
+  }
   return (
     <Container className="py-5">
       <Card className="shadow-sm border-0 mx-auto" style={{ maxWidth: '900px' }}>
@@ -23,7 +27,7 @@ const AddBus = () => {
               <p className="text-muted mb-0">Enter the vehicle details to add it to your fleet.</p>
             </div>
           </div>
-          <Form>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="mb-3 text-danger">Core Information</h5>
             <Row>
               <Col md={6}>
