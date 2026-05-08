@@ -2,36 +2,36 @@ import React from 'react'
 import { Button, Card, Container, Form, Row, Col, Table, Badge } from 'react-bootstrap';
 
 const BusList = () => {
-    // const buses = [
-    //     {
-    //         id: 1,
-    //         bus_name: "City Express",
-    //         registration_number: "ABC-1234",
-    //         type: "AC Coach",
-    //         total_seats: 40,
-    //         status: "active",
-    //         brand: "Volvo"
-    //     },
-    //     {
-    //         id: 2,
-    //         bus_name: "Mountain Rider",
-    //         registration_number: "XYZ-5678",
-    //         type: "Non-AC Coach",
-    //         total_seats: 50,
-    //         status: "maintenance",
-    //         brand: "Mercedes"
-    //     },
-    //     {
-    //         id: 3,
-    //         bus_name: "Sleeper Star",
-    //         registration_number: "LMN-9101",
-    //         type: "AC Sleeper",
-    //         total_seats: 30,
-    //         status: "retired",
-    //         brand: "Scania"
-    //     }
-    // ];
-    const buses = [];
+    const buses = [
+        {
+            id: 1,
+            bus_name: "City Express",
+            registration_number: "ABC-1234",
+            type: "AC Coach",
+            total_seats: 40,
+            status: "active",
+            brand: "Volvo"
+        },
+        {
+            id: 2,
+            bus_name: "Mountain Rider",
+            registration_number: "XYZ-5678",
+            type: "Non-AC Coach",
+            total_seats: 50,
+            status: "maintenance",
+            brand: "Mercedes"
+        },
+        {
+            id: 3,
+            bus_name: "Sleeper Star",
+            registration_number: "LMN-9101",
+            type: "AC Sleeper",
+            total_seats: 30,
+            status: "retired",
+            brand: "Scania"
+        }
+    ];
+    // const buses = [];
   return (
     <div>
       <Container className="py-5">
@@ -81,7 +81,20 @@ const BusList = () => {
                             <p className="text-muted">You haven't added any vehicles to your fleet yet.</p>
                         </div>
                     ) : (
-                        Hello
+                        <Table responsive hover className="align-middle mb-0">
+                            <thead className="table-light">
+                                <tr>
+                                    <th className="ps-4 py-3">Bus Details</th>
+                                    <th className="py-3">Reg. Number</th>
+                                    <th className="py-3">Type & Seats</th>
+                                    <th className="py-3" style={{ width: '200px' }}>Current Status</th>
+                                    <th className="text-center pe-4 py-3">Quick Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </Table>
                     )}
                 </Card.Body>
             </Card>
