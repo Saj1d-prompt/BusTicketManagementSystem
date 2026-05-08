@@ -43,6 +43,19 @@ const BusList = () => {
                     <i className="bi bi-plus-circle me-2"></i>Add New Bus
                 </Button>
             </div>
+            <Card className="shadow-sm border-0 mb-4 bg-light">
+                <Card.Body>
+                    <Row className="g-3">
+                        <Col md={6}>
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Search by Bus Name, Reg No, or Brand..." 
+                            />
+                        </Col>
+                    </Row>
+                </Card.Body>
+            </Card>
+
         </Container>
     </div>
   )
