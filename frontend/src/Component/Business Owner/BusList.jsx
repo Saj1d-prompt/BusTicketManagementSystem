@@ -52,6 +52,22 @@ const BusList = () => {
                                 placeholder="Search by Bus Name, Reg No, or Brand..." 
                             />
                         </Col>
+                        <Col md={3}>
+                            <Form.Select>
+                                <option value="">All Bus Types</option>
+                                <option value="AC">AC Coach</option>
+                                <option value="Non-AC">Non-AC Coach</option>
+                                <option value="Sleeper">AC Sleeper</option>
+                            </Form.Select>
+                        </Col>
+                        <Col md={3}>
+                            <Form.Select>
+                                <option value="">All Statuses</option>
+                                <option value="active">Active</option>
+                                <option value="maintenance">Maintenance</option>
+                                <option value="retired">Retired</option>
+                            </Form.Select>
+                        </Col>
                     </Row>
                 </Card.Body>
             </Card>
