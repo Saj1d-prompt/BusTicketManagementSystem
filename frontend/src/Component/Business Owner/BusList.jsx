@@ -92,7 +92,50 @@ const BusList = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                {buses.length > 0 ? buses.map((bus) => (
+                                    <tr key={bus.id}>
+                                        <td className="ps-4 py-3">
+                                            <span className="fw-semibold d-block text-primary">{bus.bus_name}</span>
+                                            <small className="text-muted">
+                                                {bus.brand ? `Brand: ${bus.brand}` : 'Brand: N/A'}
+                                            </small>
+                                        </td>
+                                        <td>
+                                            <Badge bg="secondary" className="px-2 py-1 text-uppercase letter-spacing-1">
+                                                {bus.registration_number}
+                                            </Badge>
+                                        </td>
+                                        <td>
+                                            <span className="d-block">{bus.type}</span>
+                                            <small className="text-muted">{bus.total_seats} Seats</small>
+                                        </td>
+                                        <td>
+                                            <Form.Select 
+                                                size="sm"
+                                                className={`fw-semibold ${
+                                                    bus.status === 'active' ? 'text-success border-success' : 
+                                                    bus.status === 'maintenance' ? 'text-warning border-warning' : 
+                                                    'text-danger border-danger'
+                                                }`}
+                                            >
+                                                <option value="active">Active</option>
+                                                <option value="maintenance">Maintenance</option>
+                                                <option value="retired">Retired</option>
+                                            </Form.Select>
+                                        </td>
+                                        <td className="text-center pe-4">
+                                            <Button variant="light" size="sm" className="text-primary border">
+                                                <i className="bi bi-eye"></i> Details
+                                            </Button>
+                                        </td>
+                                    </tr>
+                                )) : (
+                                    <tr>
+                                        <td colSpan="5" className="text-center py-4 text-muted">
+                                            No buses match your search/filter criteria.
+                                        </td>
+                                    </tr>
+                                )}
                             </tbody>
                         </Table>
                     )}
