@@ -2,35 +2,36 @@ import React from 'react'
 import { Button, Card, Container, Form, Row, Col, Table, Badge } from 'react-bootstrap';
 
 const BusList = () => {
-    const buses = [
-        {
-            id: 1,
-            bus_name: "City Express",
-            registration_number: "ABC-1234",
-            type: "AC Coach",
-            total_seats: 40,
-            status: "active",
-            brand: "Volvo"
-        },
-        {
-            id: 2,
-            bus_name: "Mountain Rider",
-            registration_number: "XYZ-5678",
-            type: "Non-AC Coach",
-            total_seats: 50,
-            status: "maintenance",
-            brand: "Mercedes"
-        },
-        {
-            id: 3,
-            bus_name: "Sleeper Star",
-            registration_number: "LMN-9101",
-            type: "AC Sleeper",
-            total_seats: 30,
-            status: "retired",
-            brand: "Scania"
-        }
-    ];
+    // const buses = [
+    //     {
+    //         id: 1,
+    //         bus_name: "City Express",
+    //         registration_number: "ABC-1234",
+    //         type: "AC Coach",
+    //         total_seats: 40,
+    //         status: "active",
+    //         brand: "Volvo"
+    //     },
+    //     {
+    //         id: 2,
+    //         bus_name: "Mountain Rider",
+    //         registration_number: "XYZ-5678",
+    //         type: "Non-AC Coach",
+    //         total_seats: 50,
+    //         status: "maintenance",
+    //         brand: "Mercedes"
+    //     },
+    //     {
+    //         id: 3,
+    //         bus_name: "Sleeper Star",
+    //         registration_number: "LMN-9101",
+    //         type: "AC Sleeper",
+    //         total_seats: 30,
+    //         status: "retired",
+    //         brand: "Scania"
+    //     }
+    // ];
+    const buses = [];
   return (
     <div>
       <Container className="py-5">
@@ -71,7 +72,19 @@ const BusList = () => {
                     </Row>
                 </Card.Body>
             </Card>
-
+            <Card className="shadow-sm border-0">
+                <Card.Body className="p-0">
+                    {buses.length === 0 ? (
+                        <div className="text-center py-5">
+                            <i className="bi bi-bus-front text-muted" style={{ fontSize: '3rem' }}></i>
+                            <h5 className="mt-3 text-muted">No buses found</h5>
+                            <p className="text-muted">You haven't added any vehicles to your fleet yet.</p>
+                        </div>
+                    ) : (
+                        Hello
+                    )}
+                </Card.Body>
+            </Card>
         </Container>
     </div>
   )
