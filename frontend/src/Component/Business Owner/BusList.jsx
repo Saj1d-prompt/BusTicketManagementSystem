@@ -1,37 +1,15 @@
 import React from 'react'
 import { Button, Card, Container, Form, Row, Col, Table, Badge } from 'react-bootstrap';
-
+import { useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import { useEffect } from 'react';
 const BusList = () => {
-    const buses = [
-        {
-            id: 1,
-            bus_name: "City Express",
-            registration_number: "ABC-1234",
-            type: "AC Coach",
-            total_seats: 40,
-            status: "active",
-            brand: "Volvo"
-        },
-        {
-            id: 2,
-            bus_name: "Mountain Rider",
-            registration_number: "XYZ-5678",
-            type: "Non-AC Coach",
-            total_seats: 50,
-            status: "maintenance",
-            brand: "Mercedes"
-        },
-        {
-            id: 3,
-            bus_name: "Sleeper Star",
-            registration_number: "LMN-9101",
-            type: "AC Sleeper",
-            total_seats: 30,
-            status: "retired",
-            brand: "Scania"
-        }
-    ];
-    // const buses = [];
+    const [buses,setBuses] = useState([]);
+    const [loading,setLoading] = useState(true);
+    const [message,setMessage] = useState('');
+    const {user} = useContext(AuthContext);
+    
   return (
     <div>
       <Container className="py-5">
@@ -88,7 +66,6 @@ const BusList = () => {
                                     <th className="py-3">Reg. Number</th>
                                     <th className="py-3">Type & Seats</th>
                                     <th className="py-3" style={{ width: '200px' }}>Current Status</th>
-                                    <th className="text-center pe-4 py-3">Quick Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,11 +99,6 @@ const BusList = () => {
                                                 <option value="maintenance">Maintenance</option>
                                                 <option value="retired">Retired</option>
                                             </Form.Select>
-                                        </td>
-                                        <td className="text-center pe-4">
-                                            <Button variant="light" size="sm" className="text-primary border">
-                                                <i className="bi bi-eye"></i> Details
-                                            </Button>
                                         </td>
                                     </tr>
                                 )) : (
