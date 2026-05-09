@@ -102,7 +102,12 @@ const BusList = () => {
             </Card>
             <Card className="shadow-sm border-0">
                 <Card.Body className="p-0">
-                    {buses.length === 0 ? (
+                    {loading ? (
+                        <div className="text-center py-5">
+                            <Spinner animation="border" variant="primary" />
+                        </div>
+                    ) : 
+                    buses.length === 0 ? (
                         <div className="text-center py-5">
                             <i className="bi bi-bus-front text-muted" style={{ fontSize: '3rem' }}></i>
                             <h5 className="mt-3 text-muted">No buses found</h5>
