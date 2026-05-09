@@ -9,7 +9,21 @@ const BusList = () => {
     const [loading,setLoading] = useState(true);
     const [message,setMessage] = useState('');
     const {user} = useContext(AuthContext);
-    
+
+    const fetchBuses = async () => {
+        try{
+            
+        }catch(error){
+            console.error('Error fetching buses:', error);
+            setMessage({ type: 'danger', text: 'Failed to load buses. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }finally{
+            setLoading(false);
+        }
+    }
+
   return (
     <div>
       <Container className="py-5">
