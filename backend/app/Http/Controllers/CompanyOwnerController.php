@@ -108,4 +108,8 @@ class CompanyOwnerController extends Controller
             'data' => $bus
         ], 200);
     }
+
+    public function getBusList(Request $request){
+        //code
+    }
 }
