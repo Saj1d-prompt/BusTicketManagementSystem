@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { useEffect } from 'react';
+import { set } from 'react-hook-form';
+import { Spinner } from 'react-bootstrap';
 const BusList = () => {
     const [buses,setBuses] = useState([]);
     const [loading,setLoading] = useState(true);
@@ -35,6 +37,11 @@ const BusList = () => {
             setLoading(false);
         }
     }
+    useEffect(() => {
+        if (user && user.role === 'company') {
+            fetchBuses();
+        }
+    }, [user]);
 
   return (
     <div>
@@ -49,6 +56,23 @@ const BusList = () => {
                 </Button>
             </div>
             <Card className="shadow-sm border-0 mb-4 bg-light">
+                {message && (
+            <div style={{
+              position: "fixed",
+              top: "20px",
+              right: "20px",
+              minWidth: "250px",
+              padding: "12px 18px",
+              borderRadius: "8px",
+              color: "#fff",
+              backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+              boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+              zIndex: 9999,
+              animation: "slideIn 0.3s ease"
+            }}>
+              {message.text}
+            </div>
+          )}
                 <Card.Body>
                     <Row className="g-3">
                         <Col md={6}>
