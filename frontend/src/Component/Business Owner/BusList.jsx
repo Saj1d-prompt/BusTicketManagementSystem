@@ -12,7 +12,19 @@ const BusList = () => {
 
     const fetchBuses = async () => {
         try{
-            
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/busList`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                setBuses(result.data);
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to load buses.' });
+            }
         }catch(error){
             console.error('Error fetching buses:', error);
             setMessage({ type: 'danger', text: 'Failed to load buses. Please try again.' });
