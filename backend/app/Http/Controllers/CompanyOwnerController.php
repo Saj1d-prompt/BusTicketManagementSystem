@@ -110,6 +110,22 @@ class CompanyOwnerController extends Controller
     }
 
     public function getBusList(Request $request){
-        //code
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $buses = Bus::where('company_id', $companyID)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $buses
+        ], 200);
     }
 }
