@@ -165,6 +165,8 @@ const BusList = () => {
                                                 <td>
                                                     <Form.Select
                                                         size="sm"
+                                                        value={bus.status}
+                                                        onChange={(e) => handleStatusChange(bus.id, e.target.value)}
                                                         className={`fw-semibold ${bus.status === 'active' ? 'text-success border-success' :
                                                                 bus.status === 'maintenance' ? 'text-warning border-warning' :
                                                                     'text-danger border-danger'
