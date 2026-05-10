@@ -62,7 +62,15 @@ const BusList = () => {
 
     const handleStatusChange = async (busId, newStatus) => {
         try {
-
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateBusStatus/${busId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({ status: newStatus }),
+            });
+            
         } catch (error) {
             console.error('Error updating bus status:', error);
             setMessage({ type: 'danger', text: 'Failed to update bus status. Please try again.' });
