@@ -61,9 +61,9 @@ const BusList = () => {
     });
 
     const handleStatusChange = async (busId, newStatus) => {
-        try{
-            
-        }catch(error){
+        try {
+
+        } catch (error) {
             console.error('Error updating bus status:', error);
             setMessage({ type: 'danger', text: 'Failed to update bus status. Please try again.' });
             setTimeout(() => {
@@ -180,8 +180,8 @@ const BusList = () => {
                                                         value={bus.status}
                                                         onChange={(e) => handleStatusChange(bus.id, e.target.value)}
                                                         className={`fw-semibold ${bus.status === 'active' ? 'text-success border-success' :
-                                                                bus.status === 'maintenance' ? 'text-warning border-warning' :
-                                                                    'text-danger border-danger'
+                                                            bus.status === 'maintenance' ? 'text-warning border-warning' :
+                                                                'text-danger border-danger'
                                                             }`}
                                                     >
                                                         <option value="active">Active</option>
