@@ -70,7 +70,15 @@ const BusList = () => {
                 },
                 body: JSON.stringify({ status: newStatus }),
             });
-            
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                fetchBuses();
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to update bus status.' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         } catch (error) {
             console.error('Error updating bus status:', error);
             setMessage({ type: 'danger', text: 'Failed to update bus status. Please try again.' });
