@@ -60,6 +60,18 @@ const BusList = () => {
         return matchesSearch && matchesStatus && matchesType;
     });
 
+    const handleStatusChange = async (busId, newStatus) => {
+        try{
+            
+        }catch(error){
+            console.error('Error updating bus status:', error);
+            setMessage({ type: 'danger', text: 'Failed to update bus status. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }
+    }
+
     return (
         <div>
             <Container className="py-5">
