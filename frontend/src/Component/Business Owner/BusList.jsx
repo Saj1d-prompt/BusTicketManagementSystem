@@ -6,6 +6,7 @@ import { AuthContext } from '../Context/AuthContext';
 import { useEffect } from 'react';
 import { set } from 'react-hook-form';
 import { Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 const BusList = () => {
     const [buses, setBuses] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -68,7 +69,9 @@ const BusList = () => {
                         <p className="text-muted">View, search, and manage your registered buses.</p>
                     </div>
                     <Button variant="primary" className="px-4 shadow-sm">
-                        <i className="bi bi-plus-circle me-2"></i>Add New Bus
+                        <Link to="/addBus" className="text-white text-decoration-none">
+                            Add New Bus
+                        </Link>
                     </Button>
                 </div>
                 <Card className="shadow-sm border-0 mb-4 bg-light">

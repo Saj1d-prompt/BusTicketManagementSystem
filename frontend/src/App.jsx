@@ -10,6 +10,7 @@ import OwnerDashboard from './Component/Business Owner/OwnerDashboard';
 import OperatorDashboard from './Component/Operator/OperatorDashboard';
 import AddOperator from './Component/Business Owner/AddOperator';
 import CreateCompanyAcc from './Component/Admin/CreateCompanyAcc';
+import AddBus from './Component/Business Owner/AddBus';
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
           <Route path='/operatorDashboard' element={<OperatorDashboard />} />
           <Route path='/addOperator' element={<AddOperator />}></Route>
           <Route path='/createCompany' element={<CreateCompanyAcc/>}></Route>
+          <Route path='addBus' element={<AddBus/>}></Route>
         </Routes>
       </BrowserRouter>
 
