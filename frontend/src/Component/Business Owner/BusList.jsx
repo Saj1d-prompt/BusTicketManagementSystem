@@ -82,11 +82,13 @@ const BusList = () => {
                         <Col md={6}>
                             <Form.Control 
                                 type="text" 
-                                placeholder="Search by Bus Name, Reg No, or Brand..." 
+                                placeholder="Search by Bus Name, Reg No, or Brand..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)} 
                             />
                         </Col>
                         <Col md={3}>
-                            <Form.Select>
+                            <Form.Select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
                                 <option value="">All Bus Types</option>
                                 <option value="AC">AC Coach</option>
                                 <option value="Non-AC">Non-AC Coach</option>
@@ -94,7 +96,7 @@ const BusList = () => {
                             </Form.Select>
                         </Col>
                         <Col md={3}>
-                            <Form.Select>
+                            <Form.Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
                                 <option value="">All Statuses</option>
                                 <option value="active">Active</option>
                                 <option value="maintenance">Maintenance</option>
@@ -111,7 +113,7 @@ const BusList = () => {
                             <Spinner animation="border" variant="primary" />
                         </div>
                     ) : 
-                    buses.length === 0 ? (
+                    buses.length === 0 || filteredBuses.length === 0 ? (
                         <div className="text-center py-5">
                             <i className="bi bi-bus-front text-muted" style={{ fontSize: '3rem' }}></i>
                             <h5 className="mt-3 text-muted">No buses found</h5>
