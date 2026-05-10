@@ -76,7 +76,8 @@ class CompanyOwnerController extends Controller
         ], 200);
     }
 
-    public function addBus(Request $request){
+    public function addBus(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'bus_name' => 'required|string',
             'brand' => 'string',
@@ -109,7 +110,8 @@ class CompanyOwnerController extends Controller
         ], 200);
     }
 
-    public function getBusList(Request $request){
+    public function getBusList(Request $request)
+    {
         $companyID = $request->user()->company_id;
 
         if (!$companyID) {
@@ -129,7 +131,47 @@ class CompanyOwnerController extends Controller
         ], 200);
     }
 
-    public function updateBusStatus(Request $request, $id){
-        //code
+    public function updateBusStatus(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|string|in:active,maintenance,retired',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $bus = Bus::where('id', $id)
+            ->where('company_id', $companyID)
+            ->first();
+
+        if (!$bus) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Bus not found'
+            ], 404);
+        }
+
+        $bus->status = $request->status;
+        $bus->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Bus status updated successfully',
+            'data' => $bus
+        ], 200);
     }
 }
