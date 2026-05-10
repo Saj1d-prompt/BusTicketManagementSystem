@@ -12,6 +12,10 @@ const BusList = () => {
     const [message,setMessage] = useState('');
     const {user} = useContext(AuthContext);
 
+    const [searchQuery, setSearchQuery] = useState('');
+    const [statusFilter, setStatusFilter] = useState('');
+    const [typeFilter, setTypeFilter] = useState('');
+
     const fetchBuses = async () => {
         try{
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/busList`, {
