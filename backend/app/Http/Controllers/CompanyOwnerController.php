@@ -128,4 +128,8 @@ class CompanyOwnerController extends Controller
             'data' => $buses
         ], 200);
     }
+
+    public function updateBusStatus(Request $request, $id){
+        //code
+    }
 }
