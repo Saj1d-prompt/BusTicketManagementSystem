@@ -157,7 +157,7 @@ const BusList = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {buses.length > 0 ? buses.map((bus) => (
+                                        {filteredBuses.length > 0 ? filteredBuses.map((bus) => (
                                             <tr key={bus.id}>
                                                 <td className="ps-4 py-3">
                                                     <span className="fw-semibold d-block text-primary">{bus.bus_name}</span>
