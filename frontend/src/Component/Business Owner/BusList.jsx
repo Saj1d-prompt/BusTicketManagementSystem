@@ -47,6 +47,18 @@ const BusList = () => {
         }
     }, [user]);
 
+    const filteredBuses = buses.filter(bus => {
+        const matchesSearch = 
+            bus.bus_name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+            bus.registration_number.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (bus.brand && bus.brand.toLowerCase().includes(searchQuery.toLowerCase()));
+            
+        const matchesStatus = statusFilter === '' || bus.status === statusFilter;
+        const matchesType = typeFilter === '' || bus.type === typeFilter;
+
+        return matchesSearch && matchesStatus && matchesType;
+    });
+
   return (
     <div>
       <Container className="py-5">
@@ -113,7 +125,7 @@ const BusList = () => {
                             <Spinner animation="border" variant="primary" />
                         </div>
                     ) : 
-                    buses.length === 0 || filteredBuses.length === 0 ? (
+                    filteredBuses.length === 0 ? (
                         <div className="text-center py-5">
                             <i className="bi bi-bus-front text-muted" style={{ fontSize: '3rem' }}></i>
                             <h5 className="mt-3 text-muted">No buses found</h5>
