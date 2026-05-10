@@ -134,7 +134,7 @@ class CompanyOwnerController extends Controller
     public function updateBusStatus(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'status' => 'required|string|in:active,maintenance,retired',
+            'status' => 'required|string|in:active,maintainance,retired',
         ]);
 
         if ($validator->fails()) {

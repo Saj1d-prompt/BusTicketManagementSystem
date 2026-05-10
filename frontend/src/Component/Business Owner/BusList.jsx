@@ -73,6 +73,10 @@ const BusList = () => {
             const result = await response.json();
             if (response.ok && result.status === 200) {
                 fetchBuses();
+                setMessage({ type: 'success', text: 'Bus status updated successfully!' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
             } else {
                 setMessage({ type: 'danger', text: result.message || 'Failed to update bus status.' });
                 setTimeout(() => {
@@ -142,7 +146,7 @@ const BusList = () => {
                                 <Form.Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
                                     <option value="">All Statuses</option>
                                     <option value="active">Active</option>
-                                    <option value="maintenance">Maintenance</option>
+                                    <option value="maintainance">Maintenance</option>
                                     <option value="retired">Retired</option>
                                 </Form.Select>
                             </Col>
@@ -196,12 +200,12 @@ const BusList = () => {
                                                         value={bus.status}
                                                         onChange={(e) => handleStatusChange(bus.id, e.target.value)}
                                                         className={`fw-semibold ${bus.status === 'active' ? 'text-success border-success' :
-                                                            bus.status === 'maintenance' ? 'text-warning border-warning' :
+                                                            bus.status === 'maintainance' ? 'text-warning border-warning' :
                                                                 'text-danger border-danger'
                                                             }`}
                                                     >
                                                         <option value="active">Active</option>
-                                                        <option value="maintenance">Maintenance</option>
+                                                        <option value="maintainance">Maintenance</option>
                                                         <option value="retired">Retired</option>
                                                     </Form.Select>
                                                 </td>
