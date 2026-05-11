@@ -6,6 +6,7 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bus;
+use App\Models\BusRoute;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyOwnerController extends Controller
@@ -179,7 +180,7 @@ class CompanyOwnerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'origin_city' => 'required|string|max:100',
-            'destination_city' => 'required|string|max:100|different:origin_city', 
+            'destination_city' => 'required|string|max:100|different:origin_city',
             'distance_km' => 'required|float|min:1',
             'estimated_duration' => 'required|string|max:50',
             'status' => 'required|in:active,inactive',
@@ -192,6 +193,23 @@ class CompanyOwnerController extends Controller
                 'status' => 422,
                 'errors' => $validator->messages()
             ], 422);
+        }
+
+        $companyID = $request->user()->company_id;
+        if (!$companyID) {
+            return response()->json(['status' => 403, 'message' => 'Company not found.'], 403);
+        }
+
+        $existingRoute = BusRoute::where('company_id', $companyID)
+            ->where('origin_city', $request->origin_city)
+            ->where('destination_city', $request->destination_city)
+            ->first();
+
+        if ($existingRoute) {
+            return response()->json([
+                'status' => 409,
+                'message' => 'This route already exists in your system.'
+            ], 409);
         }
     }
 }
