@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('bus_routes', function (Blueprint $table) {
             $table->id();
+            $table->string('origin_city');
+            $table->string('destination_city');
+            $table->float('distance_km',10, 2);
+            $table->string('estimated_time_hours');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
+
+            $table->unique(['company_id', 'origin_city', 'destination_city'], 'unique_company_route');
         });
     }
 
