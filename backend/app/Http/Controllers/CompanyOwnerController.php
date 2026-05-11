@@ -211,5 +211,19 @@ class CompanyOwnerController extends Controller
                 'message' => 'This route already exists in your system.'
             ], 409);
         }
+
+        $route = new BusRoute();
+        $route->origin_city = $request->origin_city;
+        $route->destination_city = $request->destination_city;
+        $route->distance_km = $request->distance_km;
+        $route->estimated_time_hours = $request->estimated_duration;
+        $route->company_id = $companyID;
+        $route->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Route added successfully',
+            'data' => $route
+        ], 200);
     }
 }
