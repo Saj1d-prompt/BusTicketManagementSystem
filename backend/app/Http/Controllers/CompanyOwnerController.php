@@ -174,4 +174,9 @@ class CompanyOwnerController extends Controller
             'data' => $bus
         ], 200);
     }
+
+    public function addRoute(Request $request)
+    {
+        //code
+    }
 }
