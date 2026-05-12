@@ -39,6 +39,40 @@ const AddRoute = () => {
                 <p className="text-muted mb-0">Define a new path that your buses will travel.</p>
               </div>
             </div>
+            <Form>
+              <Row className="mb-4">
+                <Col md={6}>
+                  <Form.Group>
+                    <Form.Label className="fw-semibold">Origin City <span className="text-danger">*</span></Form.Label>
+                    <Form.Select
+                      {...register('origin_city', { required: "Origin city is required" })}
+                      isInvalid={!!errors.origin_city}
+                    >
+                      <option value="">Select Starting City</option>
+                      {BANGLADESH_CITIES.map(city => <option key={`origin-${city}`} value={city}>{city}</option>)}
+                    </Form.Select>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.origin_city?.message}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+                <Col md={6} className="mt-3 mt-md-0">
+                  <Form.Group>
+                    <Form.Label className="fw-semibold">Destination City <span className="text-danger">*</span></Form.Label>
+                    <Form.Select
+                      {...register('destination_city', { required: "Destination city is required" })}
+                      isInvalid={!!errors.destination_city}
+                    >
+                      <option value="">Select Destination City</option>
+                      {BANGLADESH_CITIES.map(city => <option key={`dest-${city}`} value={city}>{city}</option>)}
+                    </Form.Select>
+                    <Form.Control.Feedback type="invalid">
+                      {errors.destination_city?.message}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+              </Row>
+            </Form>
           </Card.Body>
         </Card>
       </Container>
