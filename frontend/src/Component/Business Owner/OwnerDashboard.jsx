@@ -8,6 +8,7 @@ import { Alert, Spinner } from 'react-bootstrap';
 import OperatorList from './OperatorList';
 import AddBus from './AddBus';
 import BusList from './BusList';
+import AddRoute from './AddRoute';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -77,7 +78,8 @@ const OwnerDashboard = () => {
       {/* <OperatorList /> */}
       {/* <AddOperator /> */}
       {/* <AddBus /> */}
-      <BusList />
+      {/* <BusList /> */}
+      <AddRoute />
     </div>
   )
 }
