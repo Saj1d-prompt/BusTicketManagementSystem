@@ -10,7 +10,7 @@ import { Form, Button, Row, Col, Spinner } from 'react-bootstrap';
 
 
 const BANGLADESH_CITIES = ['Dhaka', 'Faridpur', 'Gazipur', 'Gopalganj', 'Jamalpur', 'Kishoreganj', 'Madaripur', 'Manikganj', 'Munshiganj', 'Mymensingh', 'Narayanganj', 'Narsingdi', 'Netrokona', 'Rajbari', 'Shariatpur', 'Sherpur', 'Tangail'
-  , 'Bogra', 'Joypurhat', 'Naogaon', 'Natore', 'Nawabganj', 'Pabna', 'Rajshahi', 'Sirajgonj', 'Dinajpur', 'Gaibandha', 'Kurigram', 'Lalmonirhat', 'Nilphamari', 'Panchagarh', 'Rangpur', 'Thakurgaon', 'Barguna', 'Barisal', 'Bhola', 'Jhalokati',
+  , 'Bogra', 'Joypurhat', 'Naogaon', 'Natore', 'Nawabganj', 'Pabna', 'Rajshahi', 'Sirajganj', 'Dinajpur', 'Gaibandha', 'Kurigram', 'Lalmonirhat', 'Nilphamari', 'Panchagarh', 'Rangpur', 'Thakurgaon', 'Barguna', 'Barisal', 'Bhola', 'Jhalokati',
   'Patuakhali', 'Pirojpur', 'Bandarban', 'Brahmanbaria', 'Chandpur', 'Chittagong', 'Comilla', 'Cox\'s Bazar', 'Feni', 'Khagrachari', 'Lakshmipur', 'Noakhali', 'Rangamati', 'Habiganj', 'Maulvibazar', 'Sunamganj', 'Sylhet',
   'Bagerhat', 'Chuadanga', 'Jessore', 'Jhenaidah', 'Khulna', 'Kushtia', 'Magura', 'Meherpur', 'Narail', 'Satkhira'].sort();
 
@@ -25,6 +25,24 @@ const AddRoute = () => {
       duration_minutes: '00'
     }
   });
+  const onSubmit = async (data) => {
+    if (data.origin_city === data.destination_city) {
+      setMessage({text:"Origin and Destination cannot be the same city.", type:"danger"});
+      return;
+    }
+
+    setLoading(true);
+    setMessage(null);
+    const formattedDuration = `${data.duration_hours.padStart(2, '0')}:${data.duration_minutes.padStart(2, '0')}`;
+
+    const datas = {
+      origin_city: data.origin_city,
+      destination_city: data.destination_city,
+      distance_km: parseInt(data.distance_km),
+      estimated_duration: formattedDuration,
+    };
+
+  }
   return (
     <div>
       <Container className="py-5">
@@ -56,7 +74,7 @@ const AddRoute = () => {
                 <p className="text-muted mb-0">Define a new path that your buses will travel.</p>
               </div>
             </div>
-            <Form>
+            <Form onSubmit={handleSubmit(onSubmit)}>
               <Row className="mb-4">
                 <Col md={6}>
                   <Form.Group>
