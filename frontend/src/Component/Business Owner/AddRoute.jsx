@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { Container } from 'react-bootstrap'
 import { Card } from 'react-bootstrap';
 import { Form, Button, Row, Col, Spinner } from 'react-bootstrap';
@@ -41,6 +41,18 @@ const AddRoute = () => {
       distance_km: parseInt(data.distance_km),
       estimated_duration: formattedDuration,
     };
+
+    try{
+      
+    }catch(error){
+      console.error('Error adding route:', error);
+      setMessage({text:"An error occurred. Please try again.", type:"danger"});
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }finally{
+      setLoading(false);
+    }
 
   }
   return (
