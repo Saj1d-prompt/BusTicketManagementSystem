@@ -181,9 +181,8 @@ class CompanyOwnerController extends Controller
         $validator = Validator::make($request->all(), [
             'origin_city' => 'required|string|max:100',
             'destination_city' => 'required|string|max:100|different:origin_city',
-            'distance_km' => 'required|float|min:1',
+            'distance_km' => 'required|decimal:0,2|min:1',
             'estimated_duration' => 'required|string|max:50',
-            'status' => 'required|in:active,inactive',
         ], [
             'destination_city.different' => 'The destination city cannot be the same as the origin city.'
         ]);

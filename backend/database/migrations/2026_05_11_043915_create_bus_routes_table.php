@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('origin_city');
             $table->string('destination_city');
-            $table->float('distance_km',10, 2);
+            $table->decimal('distance_km',10, 2);
             $table->string('estimated_time_hours');
             $table->enum('status', ['active', 'inactive'])->default('active');
 
