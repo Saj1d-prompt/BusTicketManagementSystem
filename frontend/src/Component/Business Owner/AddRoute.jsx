@@ -51,7 +51,19 @@ const AddRoute = () => {
         },
         body: JSON.stringify(datas),
       });
-      
+      const result = await response.json();
+      if(response.ok && result.status === 200){
+        setMessage({text:'Route created successfully!', type:'success'});
+        reset(); 
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }else{
+        setMessage({text:'Failed to create route.', type:'danger'});
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
     }catch(error){
       console.error('Error adding route:', error);
       setMessage({text:"An error occurred. Please try again.", type:"danger"});
@@ -61,7 +73,6 @@ const AddRoute = () => {
     }finally{
       setLoading(false);
     }
-
   }
   return (
     <div>
