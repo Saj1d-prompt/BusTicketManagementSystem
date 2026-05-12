@@ -27,7 +27,7 @@ const AddRoute = () => {
   });
   const onSubmit = async (data) => {
     if (data.origin_city === data.destination_city) {
-      setMessage({text:"Origin and Destination cannot be the same city.", type:"danger"});
+      setMessage({ text: "Origin and Destination cannot be the same city.", type: "danger" });
       return;
     }
 
@@ -42,7 +42,7 @@ const AddRoute = () => {
       estimated_duration: formattedDuration,
     };
 
-    try{
+    try {
       const response = await fetch(`${import.meta.env.VITE_API_KEY}/addBusRoute`, {
         method: 'POST',
         headers: {
@@ -52,25 +52,25 @@ const AddRoute = () => {
         body: JSON.stringify(datas),
       });
       const result = await response.json();
-      if(response.ok && result.status === 200){
-        setMessage({text:'Route created successfully!', type:'success'});
-        reset(); 
+      if (response.ok && result.status === 200) {
+        setMessage({ text: 'Route created successfully!', type: 'success' });
+        reset();
         setTimeout(() => {
           setMessage(null);
         }, 3000);
-      }else{
-        setMessage({text:'Failed to create route.', type:'danger'});
+      } else {
+        setMessage({ text: 'Failed to create route.', type: 'danger' });
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       }
-    }catch(error){
+    } catch (error) {
       console.error('Error adding route:', error);
-      setMessage({text:"An error occurred. Please try again.", type:"danger"});
+      setMessage({ text: "An error occurred. Please try again.", type: "danger" });
       setTimeout(() => {
         setMessage(null);
       }, 3000);
-    }finally{
+    } finally {
       setLoading(false);
     }
   }
