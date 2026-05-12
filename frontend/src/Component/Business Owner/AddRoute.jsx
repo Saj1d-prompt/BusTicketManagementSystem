@@ -72,6 +72,46 @@ const AddRoute = () => {
                   </Form.Group>
                 </Col>
               </Row>
+              <Row className="mb-4">
+                <Col md={4}>
+                  <Form.Group>
+                    <Form.Label className="fw-semibold">Distance (in KM) <span className="text-danger">*</span></Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="e.g., 250"
+                      min="1"
+                      {...register('distance_km', { required: "Distance is required", min: 1 })}
+                      isInvalid={!!errors.distance_km}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      {errors.distance_km?.message}
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Col>
+
+                <Col md={4}>
+                  <Form.Group>
+                    <Form.Label className="fw-semibold">Est. Hours</Form.Label>
+                    <Form.Control
+                      type="number"
+                      min="0"
+                      max="48"
+                      {...register('duration_hours', { required: true })}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col md={4}>
+                  <Form.Group>
+                    <Form.Label className="fw-semibold">Est. Minutes</Form.Label>
+                    <Form.Select {...register('duration_minutes', { required: true })}>
+                      <option value="00">00 mins</option>
+                      <option value="15">15 mins</option>
+                      <option value="30">30 mins</option>
+                      <option value="45">45 mins</option>
+                    </Form.Select>
+                  </Form.Group>
+                </Col>
+              </Row>
             </Form>
           </Card.Body>
         </Card>
