@@ -43,6 +43,14 @@ const AddRoute = () => {
     };
 
     try{
+      const response = await fetch(`${import.meta.env.VITE_API_KEY}/addBusRoute`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(datas),
+      });
       
     }catch(error){
       console.error('Error adding route:', error);
