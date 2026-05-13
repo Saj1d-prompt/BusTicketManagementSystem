@@ -1,6 +1,9 @@
 import React from 'react'
 import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Card } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
+import { useState } from 'react';
 
 const CompanyRoute = () => {
     return (
@@ -17,6 +20,21 @@ const CompanyRoute = () => {
                         </Link>
                     </Button>
                 </div>
+                <Card className="shadow-sm border-0">
+                    <Card.Body className="p-0">
+                        <Table responsive hover className="align-middle mb-0">
+                            <thead className="table-light">
+                                <tr>
+                                    <th className="ps-4 py-3">Starting Destination</th>
+                                    <th className="py-3">Ending Destination</th>
+                                    <th className="py-3">Total Distance</th>
+                                    <th className="py-3">Estimated Time of Travel</th>
+                                    <th className="py-3" style={{ width: '200px' }}>Route Status</th>
+                                </tr>
+                            </thead>
+                        </Table>
+                    </Card.Body>
+                </Card>
             </Container>
         </div>
     )
