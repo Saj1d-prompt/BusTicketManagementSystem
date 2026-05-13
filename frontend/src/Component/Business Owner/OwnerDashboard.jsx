@@ -9,6 +9,7 @@ import OperatorList from './OperatorList';
 import AddBus from './AddBus';
 import BusList from './BusList';
 import AddRoute from './AddRoute';
+import CompanyRoute from './CompanyRoute';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -79,7 +80,8 @@ const OwnerDashboard = () => {
       {/* <AddOperator /> */}
       {/* <AddBus /> */}
       {/* <BusList /> */}
-      <AddRoute />
+      {/* <AddRoute /> */}
+      <CompanyRoute />
     </div>
   )
 }
