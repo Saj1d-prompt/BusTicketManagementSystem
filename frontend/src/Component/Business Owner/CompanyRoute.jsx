@@ -31,7 +31,7 @@ const CompanyRoute = () => {
                                     <th className="py-3">Estimated Time of Travel</th>
                                     <th className="py-3" style={{ width: '200px' }}>Route Status</th>
                                 </tr>
-                            </thead>
+                            </thead> 
                         </Table>
                     </Card.Body>
                 </Card>
