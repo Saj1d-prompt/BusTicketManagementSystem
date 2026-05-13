@@ -231,6 +231,6 @@ class CompanyOwnerController extends Controller
     }
     public function updateRouteStatus(Request $request, $id)
     {
-        //code
+        //code 
     }
 }
