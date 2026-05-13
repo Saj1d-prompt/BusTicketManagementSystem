@@ -225,4 +225,8 @@ class CompanyOwnerController extends Controller
             'data' => $route
         ], 200);
     }
+    public function getRouteList(Request $request)
+    {
+        //code
+    }
 }
