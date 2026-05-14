@@ -38,7 +38,11 @@ const CompanyRoute = () => {
             setLoading(false);
         }
     }
-    
+    useEffect(() => {
+        if (user && user.role === 'company') {
+            fetchRoutes();
+        }
+    }, [user]);
     return (
         <div>
             <Container className="py-5">
