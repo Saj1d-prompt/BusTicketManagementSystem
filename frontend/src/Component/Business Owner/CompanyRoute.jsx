@@ -70,34 +70,6 @@ const CompanyRoute = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td className="ps-4 py-3">
-                                        <span className="fw-semibold d-block text-primary">Sirajganj</span>
-                                    </td>
-                                    <td>
-                                        <Badge bg="secondary" className="px-2 py-1 text-uppercase letter-spacing-1">
-                                            Dhaka
-                                        </Badge>
-                                    </td>
-                                    <td>
-                                        <span className="d-block">147 Km</span>
-                                    </td>
-                                    <td>
-                                        <span className="d-block">3 hours 30 minutes</span>
-                                    </td>
-                                    <td>
-                                        <Form.Select
-                                            size="sm"
-                                            value="Active"
-                                            className={`fw-semibold ${status === 'active' ? 'text-success border-success' :
-                                                'text-danger border-danger'
-                                                }`}
-                                        >
-                                            <option value="active">Active</option>
-                                            <option value="inactive">Inactive</option>
-                                        </Form.Select>
-                                    </td>
-                                </tr>
                                 {routes && routes.map((route) => (
                                     <tr key={route.id}>
                                         <td className="ps-4 py-3">
@@ -116,7 +88,6 @@ const CompanyRoute = () => {
                                         </td>
                                         <td>
                                             <Form.Select
-                                                size="sm"
                                                 value={route.status}
                                                 className={`fw-semibold ${route.status === 'active' ? 'text-success border-success' :
                                                     'text-danger border-danger'
