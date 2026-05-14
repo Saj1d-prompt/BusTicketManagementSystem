@@ -13,6 +13,32 @@ const CompanyRoute = () => {
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState(null);
     const { user } = useContext(AuthContext);
+    const fetchRoutes = async () => {
+        try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/routeList`, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                setRoutes(result.data);
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to load routes.' });
+            }
+        } catch (error) {
+            console.error('Error fetching routes:', error);
+            setMessage({ type: 'danger', text: 'Failed to load routes. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        } finally {
+            setLoading(false);
+        }
+    }
+    
     return (
         <div>
             <Container className="py-5">
