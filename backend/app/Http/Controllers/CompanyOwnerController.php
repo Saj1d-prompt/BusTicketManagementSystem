@@ -247,6 +247,18 @@ class CompanyOwnerController extends Controller
     }
     public function updateRouteStatus(Request $request, $id)
     {
-        //code 
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|string|in:active,inactive',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        
     }
 }
