@@ -279,7 +279,13 @@ class CompanyOwnerController extends Controller
             ], 404);
         }
 
-        
-        
+        $route->status = $request->status;
+        $route->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Route status updated successfully',
+            'data' => $route
+        ], 200);
     }
 }
