@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use, useContext, useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
@@ -6,8 +6,13 @@ import { Table } from 'react-bootstrap';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
+import { AuthContext } from '../Context/AuthContext';
 
 const CompanyRoute = () => {
+    const [routes, setRoutes] = useState();
+    const [loading, setLoading] = useState(true);
+    const [message, setMessage] = useState(null);
+    const { user } = useContext(AuthContext);
     return (
         <div>
             <Container className="py-5">
