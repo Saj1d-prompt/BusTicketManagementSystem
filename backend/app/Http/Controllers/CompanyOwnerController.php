@@ -259,6 +259,27 @@ class CompanyOwnerController extends Controller
             ], 400);
         }
 
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $route = BusRoute::where('id', $id)
+            ->where('company_id', $companyID)
+            ->first();
+
+        if (!$route) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Route not found'
+            ], 404);
+        }
+
+        
         
     }
 }
