@@ -98,6 +98,36 @@ const CompanyRoute = () => {
                                         </Form.Select>
                                     </td>
                                 </tr>
+                                {routes && routes.map((route) => (
+                                    <tr key={route.id}>
+                                        <td className="ps-4 py-3">
+                                            <span className="fw-semibold d-block text-primary">{route.origin_city}</span>
+                                        </td>
+                                        <td>
+                                            <Badge bg="secondary" className="px-2 py-1 text-uppercase letter-spacing-1">
+                                                {route.destination_city}
+                                            </Badge>
+                                        </td>
+                                        <td>
+                                            <span className="d-block">{route.distance_km} Km</span>
+                                        </td>
+                                        <td>
+                                            <span className="d-block">{route.estimated_time_hours}</span>
+                                        </td>
+                                        <td>
+                                            <Form.Select
+                                                size="sm"
+                                                value={route.status}
+                                                className={`fw-semibold ${route.status === 'active' ? 'text-success border-success' :
+                                                    'text-danger border-danger'
+                                                    }`}
+                                            >
+                                                <option value="active">Active</option>
+                                                <option value="inactive">Inactive</option>
+                                            </Form.Select>
+                                        </td>
+                                    </tr>
+                                ))}
                             </tbody>
                         </Table>
                     </Card.Body>
