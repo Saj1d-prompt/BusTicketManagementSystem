@@ -227,7 +227,23 @@ class CompanyOwnerController extends Controller
     }
     public function getRouteList(Request $request)
     {
-        //code
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+
+        $routes = BusRoute::where('company_id', $companyID)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $routes
+        ], 200);
     }
     public function updateRouteStatus(Request $request, $id)
     {
