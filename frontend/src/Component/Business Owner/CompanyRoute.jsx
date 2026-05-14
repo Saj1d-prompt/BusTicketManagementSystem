@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { Table } from 'react-bootstrap';
 import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import { Badge } from 'react-bootstrap';
 
 const CompanyRoute = () => {
     return (
@@ -31,7 +33,37 @@ const CompanyRoute = () => {
                                     <th className="py-3">Estimated Time of Travel</th>
                                     <th className="py-3" style={{ width: '200px' }}>Route Status</th>
                                 </tr>
-                            </thead> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td className="ps-4 py-3">
+                                        <span className="fw-semibold d-block text-primary">Sirajganj</span>
+                                    </td>
+                                    <td>
+                                        <Badge bg="secondary" className="px-2 py-1 text-uppercase letter-spacing-1">
+                                            Dhaka
+                                        </Badge>
+                                    </td>
+                                    <td>
+                                        <span className="d-block">147 Km</span>
+                                    </td>
+                                    <td>
+                                        <span className="d-block">3 hours 30 minutes</span>
+                                    </td>
+                                    <td>
+                                        <Form.Select
+                                            size="sm"
+                                            value="Active"
+                                            className={`fw-semibold ${status === 'active' ? 'text-success border-success' :
+                                                'text-danger border-danger'
+                                                }`}
+                                        >
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </Form.Select>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </Table>
                     </Card.Body>
                 </Card>
