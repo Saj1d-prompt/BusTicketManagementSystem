@@ -92,6 +92,7 @@ const CompanyRoute = () => {
                                                 className={`fw-semibold ${route.status === 'active' ? 'text-success border-success' :
                                                     'text-danger border-danger'
                                                     }`}
+                                                onChange={(e) => handleStatus(route.id, e.target.value)}
                                             >
                                                 <option value="active">Active</option>
                                                 <option value="inactive">Inactive</option>
