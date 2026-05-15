@@ -44,7 +44,15 @@ const CompanyRoute = () => {
         }
     }, [user]);
     const handleStatus = async (routeId, newStatus) => {
-        //code
+        try {
+            
+        } catch (error) {
+            console.error('Error updating route status:', error);
+            setMessage({ type: 'danger', text: 'Failed to update route status. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }
     }
     return (
         <div>
