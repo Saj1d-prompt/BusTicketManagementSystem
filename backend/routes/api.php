@@ -33,4 +33,5 @@ Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
     Route::put('/updateBusStatus/{id}', [CompanyOwnerController::class, 'updateBusStatus']);
     Route::post('/addBusRoute', [CompanyOwnerController::class, 'addRoute']);
     Route::get('/routeList', [CompanyOwnerController::class, 'getRouteList']);
+    Route::put('/updateRouteStatus/{id}', [CompanyOwnerController::class, 'updateRouteStatus']);
 });
