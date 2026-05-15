@@ -43,6 +43,9 @@ const CompanyRoute = () => {
             fetchRoutes();
         }
     }, [user]);
+    const handleStatus = async (routeId, newStatus) => {
+        //code
+    }
     return (
         <div>
             <Container className="py-5">
