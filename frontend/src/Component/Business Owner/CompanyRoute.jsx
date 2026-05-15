@@ -53,7 +53,19 @@ const CompanyRoute = () => {
                 },
                 body: JSON.stringify({ status: newStatus }),
             });
-            
+            const result = await response.json();
+            if (response.ok && result.status === 200) {
+                fetchRoutes();
+                setMessage({ type: 'success', text: 'Route status updated successfully!' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            } else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to update route status.' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         } catch (error) {
             console.error('Error updating route status:', error);
             setMessage({ type: 'danger', text: 'Failed to update route status. Please try again.' });
