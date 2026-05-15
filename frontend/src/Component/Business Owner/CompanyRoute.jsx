@@ -45,6 +45,14 @@ const CompanyRoute = () => {
     }, [user]);
     const handleStatus = async (routeId, newStatus) => {
         try {
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateRouteStatus/${routeId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({ status: newStatus }),
+            });
             
         } catch (error) {
             console.error('Error updating route status:', error);
