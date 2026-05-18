@@ -54,7 +54,19 @@ const AddCounter = () => {
                                 </Form.Group>
                             </Col>
                         </Row>
-
+                        <Row className="mb-4">
+                            <Col md={6}>
+                                <Form.Group>
+                                    <Form.Label className="fw-semibold">Contact Number</Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        placeholder="e.g., 017XXXXXXXX" 
+                                        
+                                    />
+                                </Form.Group>
+                            </Col>
+                            
+                        </Row>
                         </Form>
                     </Card.Body>
                 </Card>
