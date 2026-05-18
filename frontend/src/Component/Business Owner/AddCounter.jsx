@@ -31,7 +31,22 @@ const AddCounter = () => {
                             </div>
                         </div>
                         <Form>
+                            <Row className="mb-4">
+                            <Col md={6}>
+                                <Form.Group>
+                                    <Form.Label className="fw-semibold">Located City <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select 
+                                        isInvalid={!!errors.city}
+                                    >
+                                        <option value="">Select City</option>
+                                        {BANGLADESH_CITIES.map(city => <option key={`counter-${city}`} value={city}>{city}</option>)}
+                                    </Form.Select>
+                                    
+                                </Form.Group>
+                            </Col>
                             
+                        </Row>
+
                         </Form>
                     </Card.Body>
                 </Card>
