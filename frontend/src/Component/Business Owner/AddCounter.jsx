@@ -44,7 +44,15 @@ const AddCounter = () => {
                                     
                                 </Form.Group>
                             </Col>
-                            
+                            <Col md={6} className="mt-3 mt-md-0">
+                                <Form.Group>
+                                    <Form.Label className="fw-semibold">Counter Name <span className="text-danger">*</span></Form.Label>
+                                    <Form.Control 
+                                        type="text" 
+                                        placeholder="e.g., Kalyanpur BRTC Counter" 
+                                    />
+                                </Form.Group>
+                            </Col>
                         </Row>
 
                         </Form>
