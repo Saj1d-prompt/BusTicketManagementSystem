@@ -65,7 +65,15 @@ const AddCounter = () => {
                                     />
                                 </Form.Group>
                             </Col>
-                            
+                            <Col md={6} className="mt-3 mt-md-0">
+                                <Form.Group>
+                                    <Form.Label className="fw-semibold">Counter Status <span className="text-danger">*</span></Form.Label>
+                                    <Form.Select>
+                                        <option value="active">Active (Open for ticketing)</option>
+                                        <option value="inactive">Inactive (Temporarily closed)</option>
+                                    </Form.Select>
+                                </Form.Group>
+                            </Col>
                         </Row>
                         </Form>
                     </Card.Body>
