@@ -88,6 +88,12 @@ const AddCounter = () => {
                                 </Form.Group>
                             </Col>
                         </Row>
+                        <div className="d-flex justify-content-center border-top pt-4">
+                            <Button variant="danger" type="submit" disabled={loading} className="px-5 py-2 fw-bold shadow-sm">
+                                {loading ? <Spinner as="span" animation="border" size="sm" className="me-2" /> : <i className="bi bi-plus-circle me-2"></i>}
+                                {loading ? 'Saving...' : 'Register Counter'}
+                            </Button>
+                        </div>
 
                         </Form>
                     </Card.Body>
