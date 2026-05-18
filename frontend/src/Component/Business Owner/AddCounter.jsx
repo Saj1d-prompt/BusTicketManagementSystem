@@ -75,6 +75,20 @@ const AddCounter = () => {
                                 </Form.Group>
                             </Col>
                         </Row>
+                        <Row className="mb-4">
+                            <Col md={12}>
+                                <Form.Group>
+                                    <Form.Label className="fw-semibold">Full Address / Landmark</Form.Label>
+                                    <Form.Control 
+                                        as="textarea" 
+                                        rows={2} 
+                                        placeholder="e.g., Opposite to City Mall, Main Road" 
+                                        
+                                    />
+                                </Form.Group>
+                            </Col>
+                        </Row>
+
                         </Form>
                     </Card.Body>
                 </Card>
