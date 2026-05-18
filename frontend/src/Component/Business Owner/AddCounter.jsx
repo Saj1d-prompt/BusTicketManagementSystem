@@ -30,6 +30,9 @@ const AddCounter = () => {
                                 <p className="text-muted mb-0">Add a physical boarding/dropping point for your passengers.</p>
                             </div>
                         </div>
+                        <Form>
+                            
+                        </Form>
                     </Card.Body>
                 </Card>
             </Container>
