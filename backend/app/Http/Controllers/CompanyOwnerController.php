@@ -297,5 +297,13 @@ class CompanyOwnerController extends Controller
             'contact_number' => 'required|string|max:11',
             'status' => 'required|string|in:active,inactive',
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 401,
+                'errors' => $validator->messages()
+            ], 401);
+        }
+        
     }
 }
