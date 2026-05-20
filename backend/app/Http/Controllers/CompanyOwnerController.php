@@ -290,6 +290,10 @@ class CompanyOwnerController extends Controller
     }
     public function addCounter(Request $request)
     {
-        // Implementation for adding a counter
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:100',
+            'city' => 'required|string|max:100',
+            'address' => 'required|string|max:255',
+        ]);
     }
 }
