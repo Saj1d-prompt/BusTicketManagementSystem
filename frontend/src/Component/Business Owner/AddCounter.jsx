@@ -16,6 +16,8 @@ const BANGLADESH_CITIES = [
 const AddCounter = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
+    const { user } = useContext(AuthContext);
+    const [message, setMessage] = useState('');
     return (
         <div>
             <Container className="py-5">
