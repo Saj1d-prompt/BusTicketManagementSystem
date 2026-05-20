@@ -294,6 +294,8 @@ class CompanyOwnerController extends Controller
             'name' => 'required|string|max:100',
             'city' => 'required|string|max:100',
             'address' => 'required|string|max:255',
+            'contact_number' => 'required|string|max:11',
+            'status' => 'required|string|in:active,inactive',
         ]);
     }
 }
