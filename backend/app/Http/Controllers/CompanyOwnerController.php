@@ -288,4 +288,8 @@ class CompanyOwnerController extends Controller
             'data' => $route
         ], 200);
     }
+    public function addCounter(Request $request)
+    {
+        // Implementation for adding a counter
+    }
 }
