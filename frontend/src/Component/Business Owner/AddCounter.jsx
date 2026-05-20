@@ -37,76 +37,76 @@ const AddCounter = () => {
                         </div>
                         <Form onSubmit={handleSubmit(onSubmit)}>
                             <Row className="mb-4">
-                            <Col md={6}>
-                                <Form.Group>
-                                    <Form.Label className="fw-semibold">Located City <span className="text-danger">*</span></Form.Label>
-                                    <Form.Select 
-                                        {...register('city', { required: 'City is required' })}
-                                        isInvalid={!!errors.city}
-                                    >
-                                        <option value="">Select City</option>
-                                        {BANGLADESH_CITIES.map(city => <option key={`counter-${city}`} value={city}>{city}</option>)}
-                                    </Form.Select>
-                                    
-                                </Form.Group>
-                            </Col>
-                            <Col md={6} className="mt-3 mt-md-0">
-                                <Form.Group>
-                                    <Form.Label className="fw-semibold">Counter Name <span className="text-danger">*</span></Form.Label>
-                                    <Form.Control 
-                                        type="text" 
-                                        placeholder="e.g., Kalyanpur BRTC Counter" 
-                                        {...register('name', { required: 'Counter name is required' })}
-                                        isInvalid={!!errors.name}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row className="mb-4">
-                            <Col md={6}>
-                                <Form.Group>
-                                    <Form.Label className="fw-semibold">Contact Number</Form.Label>
-                                    <Form.Control 
-                                        type="text" 
-                                        placeholder="e.g., 017XXXXXXXX" 
-                                        {...register('contact_number', { required: 'Contact number is required' })}
-                                        isInvalid={!!errors.contact_number}
-                                    />
-                                </Form.Group>
-                            </Col>
-                            <Col md={6} className="mt-3 mt-md-0">
-                                <Form.Group>
-                                    <Form.Label className="fw-semibold">Counter Status <span className="text-danger">*</span></Form.Label>
-                                    <Form.Select 
-                                        {...register('status', { required: 'Status is required' })}
-                                        isInvalid={!!errors.status}
-                                    >
-                                        <option value="active">Active (Open for ticketing)</option>
-                                        <option value="inactive">Inactive (Temporarily closed)</option>
-                                    </Form.Select>
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <Row className="mb-4">
-                            <Col md={12}>
-                                <Form.Group>
-                                    <Form.Label className="fw-semibold">Full Address / Landmark</Form.Label>
-                                    <Form.Control 
-                                        as="textarea" 
-                                        rows={2} 
-                                        placeholder="e.g., Opposite to City Mall, Main Road" 
-                                        {...register('address', { required: 'Address is required' })}
-                                        isInvalid={!!errors.address}
-                                    />
-                                </Form.Group>
-                            </Col>
-                        </Row>
-                        <div className="d-flex justify-content-center border-top pt-4">
-                            <Button variant="danger" type="submit" disabled={loading} className="px-5 py-2 fw-bold shadow-sm">
-                                {loading ? <Spinner as="span" animation="border" size="sm" className="me-2" /> : <i className="bi bi-plus-circle me-2"></i>}
-                                {loading ? 'Saving...' : 'Register Counter'}
-                            </Button>
-                        </div>
+                                <Col md={6}>
+                                    <Form.Group>
+                                        <Form.Label className="fw-semibold">Located City <span className="text-danger">*</span></Form.Label>
+                                        <Form.Select
+                                            {...register('city', { required: 'City is required' })}
+                                            isInvalid={!!errors.city}
+                                        >
+                                            <option value="">Select City</option>
+                                            {BANGLADESH_CITIES.map(city => <option key={`counter-${city}`} value={city}>{city}</option>)}
+                                        </Form.Select>
+
+                                    </Form.Group>
+                                </Col>
+                                <Col md={6} className="mt-3 mt-md-0">
+                                    <Form.Group>
+                                        <Form.Label className="fw-semibold">Counter Name <span className="text-danger">*</span></Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="e.g., Kalyanpur BRTC Counter"
+                                            {...register('name', { required: 'Counter name is required' })}
+                                            isInvalid={!!errors.name}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <Row className="mb-4">
+                                <Col md={6}>
+                                    <Form.Group>
+                                        <Form.Label className="fw-semibold">Contact Number</Form.Label>
+                                        <Form.Control
+                                            type="text"
+                                            placeholder="e.g., 017XXXXXXXX"
+                                            {...register('contact_number', { required: 'Contact number is required' })}
+                                            isInvalid={!!errors.contact_number}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                                <Col md={6} className="mt-3 mt-md-0">
+                                    <Form.Group>
+                                        <Form.Label className="fw-semibold">Counter Status <span className="text-danger">*</span></Form.Label>
+                                        <Form.Select
+                                            {...register('status', { required: 'Status is required' })}
+                                            isInvalid={!!errors.status}
+                                        >
+                                            <option value="active">Active (Open for ticketing)</option>
+                                            <option value="inactive">Inactive (Temporarily closed)</option>
+                                        </Form.Select>
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <Row className="mb-4">
+                                <Col md={12}>
+                                    <Form.Group>
+                                        <Form.Label className="fw-semibold">Full Address / Landmark</Form.Label>
+                                        <Form.Control
+                                            as="textarea"
+                                            rows={2}
+                                            placeholder="e.g., Opposite to City Mall, Main Road"
+                                            {...register('address', { required: 'Address is required' })}
+                                            isInvalid={!!errors.address}
+                                        />
+                                    </Form.Group>
+                                </Col>
+                            </Row>
+                            <div className="d-flex justify-content-center border-top pt-4">
+                                <Button variant="danger" type="submit" disabled={loading} className="px-5 py-2 fw-bold shadow-sm">
+                                    {loading ? <Spinner as="span" animation="border" size="sm" className="me-2" /> : <i className="bi bi-plus-circle me-2"></i>}
+                                    {loading ? 'Saving...' : 'Register Counter'}
+                                </Button>
+                            </div>
                         </Form>
                     </Card.Body>
                 </Card>
