@@ -6,6 +6,7 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Bus;
+use App\Models\BusCounter;
 use App\Models\BusRoute;
 use Illuminate\Support\Facades\Validator;
 
@@ -304,6 +305,14 @@ class CompanyOwnerController extends Controller
                 'errors' => $validator->messages()
             ], 401);
         }
-        
+
+        $counter = new BusCounter();
+        $counter->name = $request->name;
+        $counter->city = $request->city;
+        $counter->address = $request->address;
+        $counter->contact_number = $request->contact_number;
+        $counter->status = $request->status;
+        $counter->company_id = $request->user()->company_id;
+        $counter->save();
     }
 }
