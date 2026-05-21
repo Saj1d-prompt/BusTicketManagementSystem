@@ -68,7 +68,7 @@ const AddCounter = () => {
                                         <Form.Label className="fw-semibold">Contact Number</Form.Label>
                                         <Form.Control
                                             type="text"
-                                            placeholder="e.g., 017XXXXXXXX"
+                                            placeholder="e.g., +8/017XXXXXXXX"
                                             {...register('contact_number', { required: 'Contact number is required' })}
                                             isInvalid={!!errors.contact_number}
                                         />
