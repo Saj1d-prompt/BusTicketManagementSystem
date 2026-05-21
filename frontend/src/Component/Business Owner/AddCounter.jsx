@@ -12,7 +12,6 @@ const BANGLADESH_CITIES = [
     'Bagerhat', 'Chuadanga', 'Jessore', 'Jhenaidah', 'Khulna', 'Kushtia', 'Magura', 'Meherpur', 'Narail', 'Satkhira'
 ].sort();
 
-
 const AddCounter = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
@@ -47,7 +46,6 @@ const AddCounter = () => {
                                             <option value="">Select City</option>
                                             {BANGLADESH_CITIES.map(city => <option key={`counter-${city}`} value={city}>{city}</option>)}
                                         </Form.Select>
-
                                     </Form.Group>
                                 </Col>
                                 <Col md={6} className="mt-3 mt-md-0">
