@@ -18,7 +18,13 @@ const AddCounter = () => {
     const { user } = useContext(AuthContext);
     const [message, setMessage] = useState('');
     const onSubmit = async (data) => {
-        
+        try{
+
+        }catch(error){
+
+        }finally{
+            setLoading(false);
+        }
     }
     return (
         <div>
