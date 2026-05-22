@@ -19,7 +19,14 @@ const AddCounter = () => {
     const [message, setMessage] = useState('');
     const onSubmit = async (data) => {
         try{
-
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/addCounter`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify(data),
+            });
         }catch(error){
             setMessage({ type: 'danger', text: 'An error occurred while saving the counter. Please try again.' });
             setTimeout(() => {
