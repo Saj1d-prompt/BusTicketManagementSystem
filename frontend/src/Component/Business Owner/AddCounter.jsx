@@ -21,7 +21,10 @@ const AddCounter = () => {
         try{
 
         }catch(error){
-
+            setMessage({ type: 'danger', text: 'An error occurred while saving the counter. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
         }finally{
             setLoading(false);
         }
