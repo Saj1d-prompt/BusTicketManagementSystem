@@ -18,7 +18,7 @@ const AddCounter = () => {
     const { user } = useContext(AuthContext);
     const [message, setMessage] = useState('');
     const onSubmit = async (data) => {
-        //API Connection Code Here
+        
     }
     return (
         <div>

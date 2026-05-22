@@ -314,5 +314,11 @@ class CompanyOwnerController extends Controller
         $counter->status = $request->status;
         $counter->company_id = $request->user()->company_id;
         $counter->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Counter added successfully',
+            'data' => $counter
+        ], 200);
     }
 }
