@@ -13,7 +13,7 @@ const BANGLADESH_CITIES = [
 ].sort();
 
 const AddCounter = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
     const [message, setMessage] = useState('');
@@ -27,6 +27,19 @@ const AddCounter = () => {
                 },
                 body: JSON.stringify(data),
             });
+            const result = await response.json();
+            if (result.status === 200) {
+                setMessage({ type: 'success', text: result.message });
+                reset();
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            } else {
+                setMessage({ type: 'danger', text: result.message });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         }catch(error){
             setMessage({ type: 'danger', text: 'An error occurred while saving the counter. Please try again.' });
             setTimeout(() => {
