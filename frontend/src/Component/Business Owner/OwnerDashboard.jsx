@@ -11,6 +11,7 @@ import BusList from './BusList';
 import AddRoute from './AddRoute';
 import CompanyRoute from './CompanyRoute';
 import AddCounter from './AddCounter';
+import ViewCounter from './ViewCounter';
 
 const OwnerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -83,7 +84,8 @@ const OwnerDashboard = () => {
       {/* <BusList /> */}
       {/* <AddRoute /> */}
       {/* <CompanyRoute /> */}
-      <AddCounter />
+      {/* <AddCounter /> */}
+      <ViewCounter />
     </div>
   )
 }
