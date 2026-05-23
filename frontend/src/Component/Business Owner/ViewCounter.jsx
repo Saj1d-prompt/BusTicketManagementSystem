@@ -29,6 +29,14 @@ const ViewCounter = () => {
                                 <option value="inactive">Inactive Only</option>
                             </Form.Select>
                         </Col>
+                        <Col sm={6}>
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Search counter or city..." 
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                        </Col>
                     </Row>
                 </div>
             </div>
