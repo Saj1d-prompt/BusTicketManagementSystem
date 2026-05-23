@@ -16,6 +16,21 @@ const ViewCounter = () => {
                     <h3 className="fw-bold mb-1">Bus Counters</h3>
                     <p className="text-muted mb-0">Overview of your current operational physical stops.</p>
                 </div>
+                <div style={{ minWidth: '350px' }}>
+                    <Row className="g-2">
+                        <Col sm={6}>
+                            <Form.Select 
+                                value={statusFilter} 
+                                onChange={(e) => setStatusFilter(e.target.value)}
+                                className="fw-semibold text-secondary"
+                            >
+                                <option value="all">All Counters</option>
+                                <option value="active">Active Only</option>
+                                <option value="inactive">Inactive Only</option>
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                </div>
             </div>
             
         </Container>
