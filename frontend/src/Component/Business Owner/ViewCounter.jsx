@@ -42,7 +42,16 @@ const ViewCounter = () => {
                 </div>
                 <Card className="shadow-sm border-0">
                     <Card.Body className="p-0">
-
+                        {loading ? (
+                        <div className="text-center py-5">
+                            <Spinner animation="border" variant="success" />
+                            <p className="text-muted mt-2 mb-0">Loading counters...</p>
+                        </div>
+                    ):(
+                        <div>
+                            
+                        </div>
+                    )}
                     </Card.Body>
                 </Card>
 
