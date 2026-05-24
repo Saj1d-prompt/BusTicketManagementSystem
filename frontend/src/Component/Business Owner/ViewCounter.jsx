@@ -50,7 +50,13 @@ const ViewCounter = () => {
                     ):(
                         <Table responsive hover className="align-middle mb-0">
                             <thead className="table-light">
-                                
+                                <tr>
+                                    <th className="ps-4">Counter Name</th>
+                                    <th>City</th>
+                                    <th>Contact Info</th>
+                                    <th>Address / Landmark</th>
+                                    <th className="text-center pe-4">Status</th>
+                                </tr>
                             </thead>
                         </Table>
                     )}
