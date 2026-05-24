@@ -39,8 +39,12 @@ const ViewCounter = () => {
                             </Col>
                         </Row>
                     </div>
-
                 </div>
+                <Card className="shadow-sm border-0">
+                    <Card.Body className="p-0">
+
+                    </Card.Body>
+                </Card>
 
             </Container>
         </div>
