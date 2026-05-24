@@ -49,7 +49,9 @@ const ViewCounter = () => {
                         </div>
                     ):(
                         <Table responsive hover className="align-middle mb-0">
-
+                            <thead className="table-light">
+                                
+                            </thead>
                         </Table>
                     )}
                     </Card.Body>
