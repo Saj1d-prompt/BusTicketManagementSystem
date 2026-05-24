@@ -48,9 +48,9 @@ const ViewCounter = () => {
                             <p className="text-muted mt-2 mb-0">Loading counters...</p>
                         </div>
                     ):(
-                        <div>
-                            
-                        </div>
+                        <Table responsive hover className="align-middle mb-0">
+
+                        </Table>
                     )}
                     </Card.Body>
                 </Card>
