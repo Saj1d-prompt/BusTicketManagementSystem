@@ -58,6 +58,9 @@ const ViewCounter = () => {
                                         <th className="text-center pe-4">Status</th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    
+                                </tbody>
                             </Table>
                         )}
                     </Card.Body>
