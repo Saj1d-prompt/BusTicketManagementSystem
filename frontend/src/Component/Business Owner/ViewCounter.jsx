@@ -76,6 +76,16 @@ const ViewCounter = () => {
                                             </Badge>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td className="ps-4 fw-bold text-dark">Sirajganj Counter 2</td>
+                                        <td>
+                                            <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
+                                                Sirajganj
+                                            </Badge>
+                                        </td>
+                                        <td>01717123457</td>
+                                        
+                                    </tr>
                                 </tbody>
                             </Table>
                         )}
