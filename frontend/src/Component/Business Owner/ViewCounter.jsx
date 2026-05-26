@@ -84,7 +84,14 @@ const ViewCounter = () => {
                                             </Badge>
                                         </td>
                                         <td>01717123457</td>
-                                        
+                                        <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
+                                            Market gate, Sirajganj
+                                        </td>
+                                        <td className="text-center pe-4">
+                                            <Badge className="px-3 py-1">
+                                                Inactive
+                                            </Badge>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </Table>
