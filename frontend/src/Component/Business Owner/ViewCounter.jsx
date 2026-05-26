@@ -59,7 +59,9 @@ const ViewCounter = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <tr>
+                                        
+                                    </tr>
                                 </tbody>
                             </Table>
                         )}
