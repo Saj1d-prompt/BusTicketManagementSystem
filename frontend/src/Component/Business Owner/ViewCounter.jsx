@@ -67,7 +67,14 @@ const ViewCounter = () => {
                                                 </Badge>
                                             </td>
                                             <td>01717123456</td>
-                                            
+                                            <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
+                                                Bajar station, near the bus stand, Sirajganj
+                                            </td>
+                                            <td className="text-center pe-4">
+                                                <Badge className="px-3 py-1">
+                                                    Active
+                                                </Badge>
+                                            </td>
                                     </tr>
                                 </tbody>
                             </Table>
