@@ -321,4 +321,8 @@ class CompanyOwnerController extends Controller
             'data' => $counter
         ], 200);
     }
+
+    public function getCounter(Request $request){
+        //code
+    }
 }
