@@ -331,5 +331,14 @@ class CompanyOwnerController extends Controller
                 'message' => 'Company not found'
             ], 404);
         }
+        
+        $counters = BusCounter::where('company_id', $companyID)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $counters
+        ], 200);
     }
 }
