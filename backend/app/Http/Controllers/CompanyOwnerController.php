@@ -323,6 +323,13 @@ class CompanyOwnerController extends Controller
     }
 
     public function getCounter(Request $request){
-        //code
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
     }
 }
