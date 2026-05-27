@@ -9,7 +9,17 @@ const ViewCounter = () => {
     const [counters, setCounters] = useState([]);
 
     const fetchCounters = async () => {
-        //code
+        try{
+
+        }catch(error){
+            console.error('Error fetching buses:', error);
+            setMessage({ type: 'danger', text: 'Failed to load Counters. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }finally{
+            setLoading(false);
+        }
     }
 
     return (
