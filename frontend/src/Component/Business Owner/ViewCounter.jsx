@@ -10,7 +10,22 @@ const ViewCounter = () => {
 
     const fetchCounters = async () => {
         try{
-
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/counterList`, {
+                headers: { 
+                    'Authorization': `Bearer ${user.token}`, 
+                    'Accept': 'application/json' 
+                }
+            });
+            const result = await response.json();
+            if(result.status === 200){
+                setCounters(result.data);
+            }
+            else{
+                setMessage({ type: 'danger', text: 'Failed to load Counters. Please try again.' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         }catch(error){
             console.error('Error fetching buses:', error);
             setMessage({ type: 'danger', text: 'Failed to load Counters. Please try again.' });
