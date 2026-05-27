@@ -8,6 +8,10 @@ const ViewCounter = () => {
     const [loading, setLoading] = useState(false);
     const [counters, setCounters] = useState([]);
 
+    const fetchCounters = async () => {
+        //code
+    }
+
     return (
         <div>
             <Container className="py-5">
