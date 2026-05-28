@@ -106,6 +106,18 @@ const ViewCounter = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {filteredCounters.length > 0 ? (
+                                    filteredCounters.map(counter => (
+                                        <div></div>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="5" className="text-center py-5 text-muted">
+                                            <i className="bi bi-geo-alt fs-2 d-block mb-2 text-black-50"></i>
+                                            No matching counters found.
+                                        </td>
+                                    </tr>
+                                )}
                                     <tr>
                                         <td className="ps-4 fw-bold text-dark">Sirajganj Counter 1</td>
                                         <td>
