@@ -13,44 +13,44 @@ const ViewCounter = () => {
     const [counters, setCounters] = useState([]);
 
     const fetchCounters = async () => {
-        try{
+        try {
             const response = await fetch(`${import.meta.env.VITE_API_KEY}/counterList`, {
-                headers: { 
-                    'Authorization': `Bearer ${user.token}`, 
-                    'Accept': 'application/json' 
+                headers: {
+                    'Authorization': `Bearer ${user.token}`,
+                    'Accept': 'application/json'
                 }
             });
             const result = await response.json();
-            if(result.status === 200){
+            if (result.status === 200) {
                 setCounters(result.data);
             }
-            else{
+            else {
                 setMessage({ type: 'danger', text: 'Failed to load Counters. Please try again.' });
                 setTimeout(() => {
                     setMessage(null);
                 }, 3000);
             }
-        }catch(error){
+        } catch (error) {
             console.error('Error fetching buses:', error);
             setMessage({ type: 'danger', text: 'Failed to load Counters. Please try again.' });
             setTimeout(() => {
                 setMessage(null);
             }, 3000);
-        }finally{
+        } finally {
             setLoading(false);
         }
     }
 
     useEffect(() => {
-        if(user && user.role === 'company'){
+        if (user && user.role === 'company') {
             fetchCounters();
         }
     }, [user]);
 
     const filteredCounters = counters.filter(counter => {
         const matchesStatus = statusFilter === 'all' || counter.status === statusFilter;
-        const matchesSearch = counter.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                              counter.city.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesSearch = counter.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            counter.city.toLowerCase().includes(searchTerm.toLowerCase());
         return matchesStatus && matchesSearch;
     });
 
@@ -86,7 +86,7 @@ const ViewCounter = () => {
                         </Row>
                     </div>
                 </div>
-                
+
                 <Card className="shadow-sm border-0">
                     <Card.Body className="p-0">
                         {loading ? (
