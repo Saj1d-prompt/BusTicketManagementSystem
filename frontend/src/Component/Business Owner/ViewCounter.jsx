@@ -1,11 +1,15 @@
 import React from 'react'
 import { Container, Card, Form, Button, Row, Col, Spinner, Table, Badge } from 'react-bootstrap';
 import { useState } from 'react';
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../Context/AuthContext';
 
 const ViewCounter = () => {
     const [statusFilter, setStatusFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
+    const { user } = useContext(UserContext);
     const [counters, setCounters] = useState([]);
 
     const fetchCounters = async () => {
