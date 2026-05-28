@@ -108,7 +108,23 @@ const ViewCounter = () => {
                                 <tbody>
                                     {filteredCounters.length > 0 ? (
                                     filteredCounters.map(counter => (
-                                        <div></div>
+                                        <tr key={counter.id}>
+                                            <td className="ps-4 fw-bold text-dark">{counter.name}</td>
+                                            <td>
+                                                <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
+                                                    {counter.city}
+                                                </Badge>
+                                            </td>
+                                            <td>{counter.contact_number || <span className="text-muted headers-font">N/A</span>}</td>
+                                            <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
+                                                {counter.address || 'No landmark specified'}
+                                            </td>
+                                            <td className="text-center pe-4">
+                                                <Badge bg={counter.status === 'active' ? 'success' : 'danger'} className="px-3 py-1">
+                                                    {counter.status.toUpperCase()}
+                                                </Badge>
+                                            </td>
+                                        </tr>
                                     ))
                                 ) : (
                                     <tr>
