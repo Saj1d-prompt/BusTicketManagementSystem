@@ -134,40 +134,6 @@ const ViewCounter = () => {
                                         </td>
                                     </tr>
                                 )}
-                                    <tr>
-                                        <td className="ps-4 fw-bold text-dark">Sirajganj Counter 1</td>
-                                        <td>
-                                            <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
-                                                Sirajganj
-                                            </Badge>
-                                        </td>
-                                        <td>01717123456</td>
-                                        <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
-                                            Bajar station, near the bus stand, Sirajganj
-                                        </td>
-                                        <td className="text-center pe-4">
-                                            <Badge className="px-3 py-1">
-                                                Active
-                                            </Badge>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td className="ps-4 fw-bold text-dark">Sirajganj Counter 2</td>
-                                        <td>
-                                            <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
-                                                Sirajganj
-                                            </Badge>
-                                        </td>
-                                        <td>01717123457</td>
-                                        <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
-                                            Market gate, Sirajganj
-                                        </td>
-                                        <td className="text-center pe-4">
-                                            <Badge className="px-3 py-1">
-                                                Inactive
-                                            </Badge>
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </Table>
                         )}
