@@ -41,6 +41,11 @@ const ViewCounter = () => {
         }
     }
 
+    useEffect(() => {
+        if(user && user.role === 'company'){
+            fetchCounters();
+        }
+    }, [user]);
     return (
         <div>
             <Container className="py-5">
