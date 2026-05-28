@@ -3,13 +3,13 @@ import { Container, Card, Form, Button, Row, Col, Spinner, Table, Badge } from '
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
-import { UserContext } from '../Context/AuthContext';
+import { AuthContext } from '../Context/AuthContext';
 
 const ViewCounter = () => {
     const [statusFilter, setStatusFilter] = useState('all');
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(false);
-    const { user } = useContext(UserContext);
+    const { user } = useContext(AuthContext);
     const [counters, setCounters] = useState([]);
 
     const fetchCounters = async () => {
@@ -46,6 +46,14 @@ const ViewCounter = () => {
             fetchCounters();
         }
     }, [user]);
+
+    const filteredCounters = counters.filter(counter => {
+        const matchesStatus = statusFilter === 'all' || counter.status === statusFilter;
+        const matchesSearch = counter.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                              counter.city.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesStatus && matchesSearch;
+    });
+
     return (
         <div>
             <Container className="py-5">
