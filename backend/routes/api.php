@@ -34,7 +34,7 @@ Route::middleware(['auth:sanctum', 'role:company'])->group(function () {
     Route::post('/addBusRoute', [CompanyOwnerController::class, 'addRoute']);
     Route::get('/routeList', [CompanyOwnerController::class, 'getRouteList']);
     Route::put('/updateRouteStatus/{id}', [CompanyOwnerController::class, 'updateRouteStatus']);
-    Route::post('/addCounter', [CompanyOwnerController::class, 'addCounter']);   
+    Route::post('/addCounter', [CompanyOwnerController::class, 'addCounter']);
     Route::get('/counterList', [CompanyOwnerController::class, 'getCounter']);
     Route::put('/updateCounterStatus/{id}', [CompanyOwnerController::class, 'updateCounterStatus']);
 });
