@@ -341,4 +341,28 @@ class CompanyOwnerController extends Controller
             'data' => $counters
         ], 200);
     }
+
+    public function updateCounterStatus(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|string|in:active,inactive',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 400,
+                'message' => 'Validation failed',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        $companyID = $request->user()->company_id;
+
+        if (!$companyID) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Company not found'
+            ], 404);
+        }
+        
+    }
 }

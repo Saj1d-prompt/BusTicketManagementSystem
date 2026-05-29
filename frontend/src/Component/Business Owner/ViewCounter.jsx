@@ -54,6 +54,10 @@ const ViewCounter = () => {
         return matchesStatus && matchesSearch;
     });
 
+    const handleStatusChange = async (counterId, newStatus) => {
+        //code to update counter status
+    }
+
     return (
         <div>
             <Container className="py-5">
