@@ -107,41 +107,41 @@ const ViewCounter = () => {
                                 </thead>
                                 <tbody>
                                     {filteredCounters.length > 0 ? (
-                                    filteredCounters.map(counter => (
-                                        <tr key={counter.id}>
-                                            <td className="ps-4 fw-bold text-dark">{counter.name}</td>
-                                            <td>
-                                                <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
-                                                    {counter.city}
-                                                </Badge>
-                                            </td>
-                                            <td>{counter.contact_number || <span className="text-muted headers-font">N/A</span>}</td>
-                                            <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
-                                                {counter.address || 'No landmark specified'}
-                                            </td>
-                                            <td>
-                                                <Form.Select
-                                                    size="sm"
-                                                    value={counter.status}
-                                                    onChange={(e) => handleStatusChange(counter.id, e.target.value)}
-                                                    className={`fw-semibold ${counter.status === 'active' ? 'text-success border-success' :
-                                                        'text-danger border-danger'
-                                                        }`}
+                                        filteredCounters.map(counter => (
+                                            <tr key={counter.id}>
+                                                <td className="ps-4 fw-bold text-dark">{counter.name}</td>
+                                                <td>
+                                                    <Badge bg="secondary" className="bg-opacity-10 text-dark px-2 py-1">
+                                                        {counter.city}
+                                                    </Badge>
+                                                </td>
+                                                <td>{counter.contact_number || <span className="text-muted headers-font">N/A</span>}</td>
+                                                <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
+                                                    {counter.address || 'No landmark specified'}
+                                                </td>
+                                                <td>
+                                                    <Form.Select
+                                                        size="sm"
+                                                        value={counter.status}
+                                                        onChange={(e) => handleStatusChange(counter.id, e.target.value)}
+                                                        className={`fw-semibold ${counter.status === 'active' ? 'text-success border-success' :
+                                                            'text-danger border-danger'
+                                                            }`}
                                                     >
                                                         <option value="active">Active</option>
                                                         <option value="inactive">Inactive</option>
                                                     </Form.Select>
                                                 </td>
+                                            </tr>
+                                        ))
+                                    ) : (
+                                        <tr>
+                                            <td colSpan="5" className="text-center py-5 text-muted">
+                                                <i className="bi bi-geo-alt fs-2 d-block mb-2 text-black-50"></i>
+                                                No matching counters found.
+                                            </td>
                                         </tr>
-                                    ))
-                                ) : (
-                                    <tr>
-                                        <td colSpan="5" className="text-center py-5 text-muted">
-                                            <i className="bi bi-geo-alt fs-2 d-block mb-2 text-black-50"></i>
-                                            No matching counters found.
-                                        </td>
-                                    </tr>
-                                )}
+                                    )}
                                 </tbody>
                             </Table>
                         )}
