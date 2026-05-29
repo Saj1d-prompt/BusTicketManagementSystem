@@ -119,11 +119,6 @@ const ViewCounter = () => {
                                             <td className="text-truncate text-muted" style={{ maxWidth: '250px' }}>
                                                 {counter.address || 'No landmark specified'}
                                             </td>
-                                            <td className="text-center pe-4">
-                                                <Badge bg={counter.status === 'active' ? 'success' : 'danger'} className="px-3 py-1">
-                                                    {counter.status.toUpperCase()}
-                                                </Badge>
-                                            </td>
                                             <td>
                                                 <Form.Select
                                                     size="sm"
