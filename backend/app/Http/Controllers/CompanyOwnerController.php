@@ -364,5 +364,24 @@ class CompanyOwnerController extends Controller
             ], 404);
         }
         
+        $counter = BusCounter::where('id', $id)
+            ->where('company_id', $companyID)
+            ->first();
+
+        if (!$counter) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Counter not found'
+            ], 404);
+        }
+
+        $counter->status = $request->status;
+        $counter->save();
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Counter status updated successfully',
+            'data' => $counter
+        ], 200);
     }
 }
