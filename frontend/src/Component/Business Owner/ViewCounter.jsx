@@ -124,6 +124,19 @@ const ViewCounter = () => {
                                                     {counter.status.toUpperCase()}
                                                 </Badge>
                                             </td>
+                                            <td>
+                                                <Form.Select
+                                                    size="sm"
+                                                    value={counter.status}
+                                                    onChange={(e) => handleStatusChange(counter.id, e.target.value)}
+                                                    className={`fw-semibold ${counter.status === 'active' ? 'text-success border-success' :
+                                                        'text-danger border-danger'
+                                                        }`}
+                                                    >
+                                                        <option value="active">Active</option>
+                                                        <option value="inactive">Inactive</option>
+                                                    </Form.Select>
+                                                </td>
                                         </tr>
                                     ))
                                 ) : (
