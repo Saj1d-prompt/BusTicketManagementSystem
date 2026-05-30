@@ -55,7 +55,7 @@ const ViewCounter = () => {
     });
 
     const handleStatusChange = async (counterId, newStatus) => {
-        //code to update counter status
+        
     }
 
     return (
