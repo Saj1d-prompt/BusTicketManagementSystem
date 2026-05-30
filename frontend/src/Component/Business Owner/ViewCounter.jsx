@@ -11,6 +11,7 @@ const ViewCounter = () => {
     const [loading, setLoading] = useState(false);
     const { user } = useContext(AuthContext);
     const [counters, setCounters] = useState([]);
+    const [message, setMessage] = useState('');
 
     const fetchCounters = async () => {
         try {
@@ -96,6 +97,23 @@ const ViewCounter = () => {
                         <h3 className="fw-bold mb-1">Bus Counters</h3>
                         <p className="text-muted mb-0">Overview of your current operational physical stops.</p>
                     </div>
+                    {message && (
+                            <div style={{
+                                position: "fixed",
+                                top: "20px",
+                                right: "20px",
+                                minWidth: "250px",
+                                padding: "12px 18px",
+                                borderRadius: "8px",
+                                color: "#fff",
+                                backgroundColor: message.type === "success" ? "#28a745" : "#dc3545",
+                                boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+                                zIndex: 9999,
+                                animation: "slideIn 0.3s ease"
+                            }}>
+                                {message.text}
+                            </div>
+                        )}
                     <div style={{ minWidth: '350px' }}>
                         <Row className="g-2">
                             <Col sm={6}>
