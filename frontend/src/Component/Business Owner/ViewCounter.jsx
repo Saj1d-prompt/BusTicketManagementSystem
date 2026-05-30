@@ -64,6 +64,7 @@ const ViewCounter = () => {
                 },
                 body: JSON.stringify({ status: newStatus }),
             });
+            const result = await response.json();
 
         }catch(error){
             console.error('Error updating bus counter status:', error);
