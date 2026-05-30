@@ -65,10 +65,16 @@ const ViewCounter = () => {
                 body: JSON.stringify({ status: newStatus }),
             });
             const result = await response.json();
-
+            if (response.ok && result.status === 200) {
+                fetchCounters();
+                setMessage({ type: 'success', text: 'Counter status updated successfully!' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
+            }
         }catch(error){
-            console.error('Error updating bus counter status:', error);
-            setMessage({ type: 'danger', text: 'Failed to update bus counter status. Please try again.' });
+            console.error('Error updating counter status:', error);
+            setMessage({ type: 'danger', text: 'Failed to update counter status. Please try again.' });
             setTimeout(() => {
                 setMessage(null);
             }, 3000);
