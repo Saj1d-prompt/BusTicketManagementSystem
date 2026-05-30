@@ -56,6 +56,14 @@ const ViewCounter = () => {
 
     const handleStatusChange = async (counterId, newStatus) => {
         try{
+            const response = await fetch(`${import.meta.env.VITE_API_KEY}/updateCounterStatus/${counterId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({ status: newStatus }),
+            });
 
         }catch(error){
             console.error('Error updating bus counter status:', error);
