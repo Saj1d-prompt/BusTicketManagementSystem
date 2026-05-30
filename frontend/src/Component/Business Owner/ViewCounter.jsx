@@ -55,7 +55,17 @@ const ViewCounter = () => {
     });
 
     const handleStatusChange = async (counterId, newStatus) => {
-        
+        try{
+
+        }catch(error){
+            console.error('Error updating bus counter status:', error);
+            setMessage({ type: 'danger', text: 'Failed to update bus counter status. Please try again.' });
+            setTimeout(() => {
+                setMessage(null);
+            }, 3000);
+        }finally{
+            fetchCounters();
+        }
     }
 
     return (
