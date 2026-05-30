@@ -71,6 +71,11 @@ const ViewCounter = () => {
                 setTimeout(() => {
                     setMessage(null);
                 }, 3000);
+            }else {
+                setMessage({ type: 'danger', text: result.message || 'Failed to update counter status.' });
+                setTimeout(() => {
+                    setMessage(null);
+                }, 3000);
             }
         }catch(error){
             console.error('Error updating counter status:', error);
